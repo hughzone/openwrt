@@ -8,6 +8,9 @@ DOMAIN-SUFFIX,hao123.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
+DOMAIN-KEYWORD,bignet
+DOMAIN-KEYWORD,hzxnet
+
 
 # IP段匹配
 IP-CIDR,219.146.1.66/32,no-resolve
@@ -587,7 +590,3 @@ DOMAIN-SUFFIX,zhongsou.com
 DOMAIN-SUFFIX,zhuihd.com
 
 # 个人配置
-DOMAIN-KEYWORD,bignet
-DOMAIN-KEYWORD,hzxnet
-DOMAIN-SUFFIX,bignet.zone
-DOMAIN-SUFFIX,hzxnet.top
