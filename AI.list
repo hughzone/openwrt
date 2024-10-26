@@ -1,16 +1,38 @@
-# 内容：OpenAi Bard anthropic
-# 域名关键字匹配
+# 内容: AI分流规则
+
+# 主流AI及相关服务
 DOMAIN-KEYWORD,openai
+DOMAIN-KEYWORD,chatgpt
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
 DOMAIN-KEYWORD,gemini
-# 域名后缀匹配
 DOMAIN,copilot.microsoft.com
+DOMAIN,api.openai.com
+DOMAIN,platform.openai.com
+DOMAIN,auth.openai.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openai-public.s3.amazonaws.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,vertexai.googleapis.com
+
+# 微软、Meta及其他主流提供商提供的AI服务
 DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,azure.com
 DOMAIN-SUFFIX,meta.ai
 DOMAIN-SUFFIX,metademolab.com
 DOMAIN-SUFFIX,perplexity.ai
-DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,codex.openai.com
+
+# 其他常见的AI及科技领域域名
 DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,client-api.arkoselabs.com
 DOMAIN-SUFFIX,events.statsigapi.net
@@ -18,14 +40,29 @@ DOMAIN-SUFFIX,featuregates.org
 DOMAIN-SUFFIX,identrust.com
 DOMAIN-SUFFIX,intercom.io
 DOMAIN-SUFFIX,intercomcdn.com
-DOMAIN-SUFFIX,oaistatic.com
-DOMAIN-SUFFIX,oaiusercontent.com
-DOMAIN-SUFFIX,openai.com
-DOMAIN-SUFFIX,openaiapi-site.azureedge.net
 DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,stripe.com
-DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,gemini.google.com
-DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,deepl.com
+DOMAIN-SUFFIX,ai21.com
+DOMAIN-SUFFIX,nvidia.com
+DOMAIN-SUFFIX,midjourney.com
+
+# 扩展: 其他AI研究平台及服务
+DOMAIN-SUFFIX,huggingface.co
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,replit.com
+DOMAIN-SUFFIX,cohere.ai
+DOMAIN-SUFFIX,forethought.ai
+DOMAIN-SUFFIX,stability.ai
+DOMAIN-SUFFIX,eleuther.ai
+DOMAIN-SUFFIX,runpod.io
+DOMAIN-SUFFIX,spell.ml
+DOMAIN-SUFFIX,wit.ai
+DOMAIN-SUFFIX,paperspace.com
+DOMAIN-SUFFIX,pyimagesearch.com
+DOMAIN-SUFFIX,vast.ai
+DOMAIN-SUFFIX,flair.ai
+DOMAIN-SUFFIX,poly.ai
+DOMAIN-SUFFIX,xembly.com
