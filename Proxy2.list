@@ -1,5 +1,8 @@
 # 代理补充列表(通过代理访问IP列表)
 
+# 个人配置
+DOMAIN-SUFFIX,copilot.microsoft.com
+
 # IP段匹配
 IP-CIDR,142.171.133.131/32,no-resolve
 IP-CIDR,103.115.43.2/32,no-resolve
