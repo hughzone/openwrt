@@ -6,6 +6,7 @@ DOMAIN-KEYWORD,chatgpt
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
 DOMAIN-KEYWORD,gemini
+DOMAIN-KEYWORD,copilot
 DOMAIN,copilot.microsoft.com
 DOMAIN,api.openai.com
 DOMAIN,platform.openai.com
