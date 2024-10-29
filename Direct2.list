@@ -1,6 +1,15 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 
-# MyList
+# 个人配置
+DOMAIN-KEYWORD,asus
+DOMAIN-KEYWORD,obsidian
+DOMAIN-KEYWORD,microsoft
+DOMAIN-SUFFIX,clashx.top
+DOMAIN-SUFFIX,xhyjs.top
+DOMAIN-SUFFIX,ventoy.net
+DOMAIN-KEYWORD,bignet
+DOMAIN-KEYWORD,hzxnet
+
 # 域名后缀匹配
 DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
@@ -8,8 +17,6 @@ DOMAIN-SUFFIX,hao123.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
-DOMAIN-KEYWORD,bignet
-DOMAIN-KEYWORD,hzxnet
 
 # IP段匹配
 IP-CIDR,219.146.1.66/32,no-resolve
@@ -582,12 +589,3 @@ DOMAIN-SUFFIX,zhimg.com
 DOMAIN-SUFFIX,zhipin.com
 DOMAIN-SUFFIX,zhongsou.com
 DOMAIN-SUFFIX,zhuihd.com
-
-# 个人配置
-DOMAIN-KEYWORD,asus
-DOMAIN-KEYWORD,obsidian
-DOMAIN-KEYWORD,microsoft
-DOMAIN-SUFFIX,hzxnet.top
-DOMAIN-SUFFIX,clashx.top
-DOMAIN-SUFFIX,xhyjs.top
-DOMAIN-SUFFIX,ventoy.net
