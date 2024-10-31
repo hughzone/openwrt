@@ -4,8 +4,11 @@
 DOMAIN-SUFFIX,clashx.top
 DOMAIN-SUFFIX,xhyjs.top
 DOMAIN-SUFFIX,ventoy.net
+DOMAIN-SUFFIX,u.tools
 DOMAIN-KEYWORD,bignet
 DOMAIN-KEYWORD,hzxnet
+DOMAIN-KEYWORD,utools
+
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,time.windows.com
