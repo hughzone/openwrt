@@ -3,6 +3,7 @@
 # 个人配置
 DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,obsidian.md
+DOMAIN-SUFFIX,gpt.ge
 
 # IP段匹配
 IP-CIDR,142.171.133.131/32,no-resolve
