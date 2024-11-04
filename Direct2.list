@@ -1,9 +1,6 @@
 # NAME: Direct2
 # AUTHOR: hughzone
 # REPO: https://github.com/hughzone/clash/tree/main
-# UPDATED: 2024-11-04 18:58:00
-# DOMAIN-SUFFIX: 5
-# TOTAL: 8
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 
 # 个人配置
