@@ -4,6 +4,7 @@
 DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,obsidian.md
 DOMAIN-SUFFIX,gpt.ge
+DOMAIN-KEYWORD,光喵
 
 # IP段匹配
 IP-CIDR,142.171.133.131/32,no-resolve
