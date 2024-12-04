@@ -13,5 +13,3 @@ DOMAIN-KEYWORD,bignet
 DOMAIN-KEYWORD,hzxnet
 DOMAIN-KEYWORD,utools
 DOMAIN-KEYWORD,synology
-
-IP-CIDR,172.17.0.0/16,no-resolve
