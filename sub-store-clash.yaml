@@ -75,7 +75,7 @@ tun:
 # DNS 配置，设置 DNS 解析的相关参数
 dns:
   enable: true # 启用 DNS 功能
-  ipv6: false # 禁用 IPv6 DNS
+  ipv6: true # 启用 IPv6 DNS
   respect-rules: true # 遵循规则进行 DNS 解析
   enhanced-mode: fake-ip # 使用伪造 IP 模式
   fake-ip-filter: # 不需要使用伪造 IP 的域名过滤规则
