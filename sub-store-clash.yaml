@@ -1,0 +1,390 @@
+# 此配置文件用于配置代理软件（如Clash）的各项参数，实现网络代理及分流功能
+# 代理提供者部分，用于从指定链接获取代理节点信息
+proxy-providers:
+  ProviderAirPort: # 定义名为 ProviderAirPort 的代理提供者
+    url: "http://192.168.100.1:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E8%81%9A%E5%90%88"  # 订阅链接，请替换为您的实际订阅链接，请勿重复名称
+    type: http # 采用 http 方式获取代理节点信息
+    interval: 86400 # 更新代理节点信息的时间间隔，单位为秒，这里设置为 1 天
+    health-check: # 健康检查配置
+      enable: true # 开启健康检查功能
+      url: https://www.gstatic.com/generate_204 # 用于健康检查的测试链接
+      interval: 300 # 健康检查的时间间隔，单位为秒，这里设置为 5 分钟
+
+# 代理列表，定义了可用的代理类型和名称
+proxies:
+  - name: "直连" # 定义一个名为“直连”的代理，类型为直接连接，不经过代理服务器
+    type: direct
+
+# 全局配置部分，设置代理软件的通用参数
+mixed-port: 7890 # 混合端口，支持 HTTP、SOCKS 等多种协议的代理服务
+ipv6: false # 禁用 IPv6 网络支持
+allow-lan: true # 允许局域网内的设备连接到该代理
+unified-delay: false # 不使用统一延迟计算
+tcp-concurrent: true # 启用 TCP 并发连接
+external-controller: 127.0.0.1:9090 # 外部控制器的地址和端口，用于与外部工具交互
+external-ui: ui # 外部用户界面的名称
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 外部用户界面的下载链接，建议定期检查更新
+keep-alive-interval: 1800 # 保持连接的时间间隔，单位为秒，这里设置为 30 分钟
+
+# GeoData 配置，用于根据地理位置和域名进行规则匹配
+geodata-mode: true # 启用 GeoData 模式
+geodata-loader: standard # 使用标准的 GeoData 加载器
+geo-auto-update: false # 禁用 GeoData 的自动更新功能，建议手动更新或使用定时任务
+geo-update-interval: 24 # GeoData 的更新间隔，单位为小时，这里设置为 24 小时
+geox-url: # GeoData 文件的下载链接，已更新为更可靠的源
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat" # GeoIP 数据文件
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat" # GeoSite 数据文件
+  mmdb: "https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip/releases/download/lite-latest/Country.mmdb" # MMDB 数据文件，使用 Dreamacro 源
+  asn: "https://mirror.ghproxy.com/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb" # ASN 数据文件
+
+# 进程查找模式和全局客户端指纹配置
+find-process-mode: strict # 设置进程查找模式为严格模式
+global-client-fingerprint: chrome # 设置全局客户端指纹为 Chrome
+
+# 配置文件存储选项
+profile:
+  store-selected: true # 保存用户选择的代理节点
+  store-fake-ip: true # 保存伪造的 IP 地址
+
+# 嗅探器配置，用于自动识别网络请求的目标域名
+sniffer:
+  enable: true # 启用嗅探器功能
+  sniff: # 嗅探规则配置
+    HTTP: # HTTP 协议嗅探配置
+      ports: [80, 8080-8880] # 嗅探的端口范围
+      override-destination: true # 覆盖目标地址
+    TLS: # TLS 协议嗅探配置
+      ports: [443, 8443] # 嗅探的端口范围
+    QUIC: # QUIC 协议嗅探配置
+      ports: [443, 8443] # 嗅探的端口范围
+  skip-domain: # 不需要嗅探的域名列表
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+# TUN 模式配置，用于实现透明代理
+tun:
+  enable: true # 启用 TUN 模式
+  stack: mixed # 设置 TUN 栈为混合模式
+  dns-hijack: # DNS 劫持配置
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true # 自动配置路由规则
+  auto-redirect: true # 自动重定向网络流量
+  auto-detect-interface: true # 自动检测网络接口
+
+# DNS 配置，设置 DNS 解析的相关参数
+dns:
+  enable: true # 启用 DNS 功能
+  ipv6: false # 禁用 IPv6 DNS
+  respect-rules: true # 遵循规则进行 DNS 解析
+  enhanced-mode: fake-ip # 使用伪造 IP 模式
+  fake-ip-filter: # 不需要使用伪造 IP 的域名过滤规则
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "+.market.xiaomi.com"
+  nameserver: # 默认的 DNS 服务器列表，使用国内公共 DNS
+    - https://120.53.53.53/dns-query # 阿里云 DNS
+    - https://223.5.5.5/dns-query  # 腾讯 DNS
+  proxy-server-nameserver: # 代理服务器使用的 DNS 服务器列表，使用国内公共 DNS
+    - https://120.53.53.53/dns-query # 阿里云 DNS
+    - https://223.5.5.5/dns-query  # 腾讯 DNS
+  nameserver-policy: # 根据规则集设置不同的 DNS 服务器
+    "rule-set:cn_domain,private_domain": # 对于规则集 cn_domain 和 private_domain 匹配的域名，使用以下 DNS 服务器
+      - https://120.53.53.53/dns-query # 阿里云 DNS
+      - https://223.5.5.5/dns-query  # 腾讯 DNS
+    "rule-set:geolocation-!cn": # 对于规则集 geolocation-!cn 匹配的域名，使用以下 DNS 服务器
+      - "https://dns.cloudflare.com/dns-query" # Cloudflare DNS
+      - "https://dns.google/dns-query" # Google DNS
+
+# 代理组配置，将代理节点分组，方便用户选择和管理
+proxy-groups:
+  - name: 默认 # 默认代理组，用户手动选择
+    type: select
+    proxies: [自动选择,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,直连]
+
+  - name: 🔎 Google # Google 服务代理组
+    type: select
+    proxies: [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 🙋 Telegram # Telegram 服务代理组
+    type: select
+    proxies: [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 🐦‍⬛ Twitter # Twitter 服务代理组
+    type: select
+    proxies: [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 📹 YouTube # YouTube 服务代理组
+    type: select
+    proxies: [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 📘 Github # Github 服务代理组
+    type: select
+    proxies:  [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 🤖 AI # AI 服务代理组
+    type: select
+    proxies:  [默认,台日新韩,台湾,日本,新加坡,韩国,美国] 
+
+  - name: 💻 Microsoft # Microsoft 服务代理组
+    type: select
+    proxies:  [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  - name: 🏠️ 国内 # 国内流量代理组
+    type: select
+    proxies:  [直连,默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择] # 国内流量优先直连
+
+  - name: 其他 # 其他流量代理组
+    type: select
+    proxies:  [默认,台日新韩,香港,台湾,日本,新加坡,韩国,美国,全部节点,自动选择,直连]
+
+  # 分隔，地区分组
+  - name: 台日新韩 # 台日韩地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "台湾|tw|taiwan|新加坡|狮城|sg|singapore|🇸🇬|日本|jp|japan|🇯🇵|韩国|kr|korea|🇰🇷"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 香港 # 香港地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "香港|hk|hongkong|hong kong|🇭🇰"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 台湾 # 台湾地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "台湾|tw|taiwan"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 新加坡 # 新加坡地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "新加坡|狮城|sg|singapore|🇸🇬"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 日本 # 日本地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "日本|jp|japan|🇯🇵"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 韩国 # 韩国地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "韩国|kr|korea|🇰🇷"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 美国 # 美国地区自动选择
+    type: url-test
+    use:
+      - ProviderAirPort
+    filter: "美国|us|unitedstates|united states|🇺🇸"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 50
+
+  - name: 全部节点 # 所有节点
+    type: select
+    include-all: true
+
+  - name: 自动选择 # 自动选择非直连节点
+    type: url-test
+    include-all: true
+    exclude-type: "direct"
+    url: 'http://www.apple.com/library/test/success.html'
+    interval: 300
+    tolerance: 10
+
+# 规则提供者，从指定链接获取规则列表
+rule-providers:
+  private_domain: # 私有域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.list"
+  cn_domain: # 国内域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.list"
+  github_domain: # Github 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.list"
+  twitter_domain: # Twitter 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.list"
+  youtube_domain: # YouTube 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list"
+  google_domain: # Google 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.list"
+  telegram_domain: # Telegram 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.list"
+  ai_domain: # AI 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/hughzone/clash/refs/heads/main/AI2.list"
+  microsoft_domain: # Microsoft 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.list"
+  geolocation-!cn: # 非中国地区域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.list"
+  gfw_domain: # GFW 域名规则
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.list"
+
+  # china_ip_list 规则，加速国内流量直连
+  china_ip_list:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt" # 使用 17mon 维护的 china_ip_list
+
+  private_ip: # 私有 IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.list"
+  cn_ip: # 中国 IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.list"
+  google_ip: # Google IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.list"
+  netflix_ip: # Netflix IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.list"
+  twitter_ip: # Twitter IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list"
+  telegram_ip: # Telegram IP 规则
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.list"
+
+  # acl4ssr 规则 (示例，请根据 acl4ssr 项目实际规则链接进行调整)
+  acl4ssr_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_DOMAIN.list" # 示例链接，请替换为 acl4ssr 提供的 geosite 规则链接
+  acl4ssr_ip:
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: text
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_IP.list" # 示例链接，请替换为 acl4ssr 提供的 geoip 规则链接
+
+
+# 规则配置，根据不同条件将网络流量分配到相应的代理组
+rules:
+  # 国内 IP 优先直连，使用 china_ip_list 规则
+  - RULE-SET,china_ip_list,🏠️ 国内,no-resolve
+
+  - RULE-SET,private_ip,直连,no-resolve # 私有 IP 直连
+  - RULE-SET,cn_domain,🏠️ 国内 # 国内域名使用国内代理组
+  - RULE-SET,private_domain,🏠️ 国内 # 私有域名使用国内代理组
+
+  - RULE-SET,github_domain,📘 Github # Github 域名
+  - RULE-SET,twitter_domain,🐦‍⬛ Twitter # Twitter 域名
+  - RULE-SET,youtube_domain,📹 YouTube # YouTube 域名
+  - RULE-SET,google_domain,🔎 Google # Google 域名
+  - RULE-SET,telegram_domain,🙋 Telegram # Telegram 域名
+  - RULE-SET,ai_domain,🤖 AI # AI 域名
+  - RULE-SET,microsoft_domain,💻 Microsoft # Microsoft 域名
+
+  - RULE-SET,geolocation-!cn,其他 # 非中国地区域名使用其他代理组
+  - RULE-SET,gfw_domain,其他 # GFW 域名使用其他代理组
+
+  - RULE-SET,google_ip,🔎 Google # Google IP
+  - RULE-SET,telegram_ip,🙋 Telegram # Telegram IP
+  - RULE-SET,twitter_ip,🐦‍⬛ Twitter # Twitter IP
+  - RULE-SET,cn_ip,🏠️ 国内 # 国内 IP 使用国内代理组
+
+  # 新增 acl4ssr 规则 (放在自定义规则之后，根据 acl4ssr 项目推荐调整顺序)
+  - RULE-SET,acl4ssr_domain,其他 # acl4ssr 域名规则，使用其他代理组 (可根据 acl4ssr 规则集细化)
+  - RULE-SET,acl4ssr_ip,其他     # acl4ssr IP 规则，使用其他代理组 (可根据 acl4ssr 规则集细化)
+
+  - MATCH,其他 # 默认规则，所有未匹配流量使用 “其他” 代理组
+
+  - GEOIP,lan,直连,no-resolve # 局域网 IP 直连
+  - GEOSITE,CN,🏠️ 国内 # CN 地区域名使用国内代理组
+  - GEOSITE,github,📘 Github # Github 地理位置
+  - GEOSITE,twitter,🐦‍⬛ Twitter # Twitter 地理位置
+  - GEOSITE,youtube,📹 YouTube # YouTube 地理位置
+  - GEOSITE,google,🔎 Google # Google 地理位置
+  - GEOSITE,telegram,🙋 Telegram # Telegram 地理位置
+  - GEOSITE,geolocation-!cn,其他 # 非中国地区地理位置使用其他代理组
+
+  - GEOIP,google,🔎 Google # Google 地理位置 IP
+  - GEOIP,telegram,🙋 Telegram # Telegram 地理位置 IP
+  - GEOIP,twitter,🐦‍⬛ Twitter # Twitter 地理位置 IP
+  - GEOIP,CN,🏠️ 国内 # CN 地区 IP 使用国内代理组
