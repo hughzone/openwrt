@@ -144,7 +144,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "台湾|tw|taiwan|新加坡|狮城|sg|singapore|🇸🇬|日本|jp|japan|🇯🇵|韩国|kr|korea|🇰🇷"
+    filter: "(?i)台湾|tw|taiwan|新加坡|狮城|sg|singapore|🇸🇬|日本|jp|japan|🇯🇵|韩国|kr|korea|🇰🇷"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -153,7 +153,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "香港|hk|hongkong|hong kong|🇭🇰"
+    filter: "(?i)香港|hk|hongkong|hong kong|🇭🇰"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -162,7 +162,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "台湾|tw|taiwan"
+    filter: "(?i)台湾|tw|taiwan"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -171,7 +171,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "新加坡|狮城|sg|singapore|🇸🇬"
+    filter: "(?i)新加坡|狮城|sg|singapore|🇸🇬"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -180,7 +180,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "日本|jp|japan|🇯🇵"
+    filter: "(?i)日本|jp|japan|🇯🇵"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -189,7 +189,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "韩国|kr|korea|🇰🇷"
+    filter: "(?i)韩国|kr|korea|🇰🇷"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
@@ -198,7 +198,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "美国|us|unitedstates|united states|🇺🇸"
+    filter: "(?i)美国|us|unitedstates|united states|🇺🇸"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
