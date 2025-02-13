@@ -2,7 +2,7 @@
 # 代理提供者部分，用于从指定链接获取代理节点信息
 proxy-providers:
   ProviderAirPort: # 定义名为 ProviderAirPort 的代理提供者
-    url: "http://192.168.100.1:3001/CKg2abstVnOeRpm1aB4G/download/collection/%E8%81%9A%E5%90%88"  # 订阅链接，请替换为您的实际订阅链接，请勿重复名称
+    url: "订阅链接，请替换为您的实际订阅链接"  # 订阅链接，请替换为您的实际订阅链接，请勿重复名称
     type: http # 采用 http 方式获取代理节点信息
     interval: 86400 # 更新代理节点信息的时间间隔，单位为秒，这里设置为 1 天
     health-check: # 健康检查配置
