@@ -17,9 +17,9 @@ proxies:
 
 # 全局配置部分，设置代理软件的通用参数
 mixed-port: 7890 # 混合端口，支持 HTTP、SOCKS 等多种协议的代理服务
-ipv6: false # 禁用 IPv6 网络支持
+ipv6: true # 启用 IPv6 网络支持
 allow-lan: true # 允许局域网内的设备连接到该代理
-unified-delay: false # 不使用统一延迟计算
+unified-delay: true # 使用统一延迟计算
 tcp-concurrent: true # 启用 TCP 并发连接
 external-controller: 127.0.0.1:9090 # 外部控制器的地址和端口，用于与外部工具交互
 external-ui: ui # 外部用户界面的名称
@@ -29,7 +29,7 @@ keep-alive-interval: 1800 # 保持连接的时间间隔，单位为秒，这里�
 # GeoData 配置，用于根据地理位置和域名进行规则匹配
 geodata-mode: true # 启用 GeoData 模式
 geodata-loader: standard # 使用标准的 GeoData 加载器
-geo-auto-update: false # 禁用 GeoData 的自动更新功能，建议手动更新或使用定时任务
+geo-auto-update: true # 启用 GeoData 的自动更新功能，建议手动更新或使用定时任务
 geo-update-interval: 24 # GeoData 的更新间隔，单位为小时，这里设置为 24 小时
 geox-url: # GeoData 文件的下载链接，已更新为更可靠的源
   geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat" # GeoIP 数据文件
