@@ -180,7 +180,7 @@ proxy-groups:
     type: url-test
     use:
       - ProviderAirPort
-    filter: "(?i)日本|jp|japan|🇯🇵"
+    filter: "(?i)日本|东京|jp|japan|🇯🇵"
     url: 'http://www.apple.com/library/test/success.html'
     interval: 300
     tolerance: 50
