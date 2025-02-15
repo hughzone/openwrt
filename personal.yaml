@@ -155,11 +155,11 @@ proxies:
   udp: true
 
 # 锚点（复用策略组配置）
-pr: &pr {type: select, proxies: [🚀 节点选择,♻️ 自动选择,♻️ 台日新韩,🇭🇰 香港自动,🇨🇳️ 台湾自动,🇯🇵️ 日本自动,🇸🇬️ 新加坡自动,🇰🇷️ 韩国自动,🇺🇸️ 美国自动,🌐 全部节点,🟢 直连]}
+pr: &pr {type: select, proxies: [🚀 节点选择,♻️ 自动,♻️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🌐 全部,🟢 直连]}
 
 # 策略组（流量走向选择）
 proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
-  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择,♻️ 台日新韩,🇭🇰 香港自动,🇨🇳️ 台湾自动,🇯🇵️ 日本自动,🇸🇬️ 新加坡自动,🇰🇷️ 韩国自动,🇺🇸️ 美国自动,🌐 全部节点,🟢 直连]}
+  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动,♻️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🌐 全部,🟢 直连]}
   - {name: 📹 YouTube,!!merge <<: *pr}  # 复用 pr 代理列表
   - {name: 🍀 Google,!!merge <<: *pr}
   - {name: 🤖 Ai,!!merge <<: *pr}
@@ -174,21 +174,15 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🍎 Apple, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)香港|hk|hongkong|hong kong"}
-  - {name: 🇨🇳 台湾节点, type: select, include-all: true, filter: "(?i)台湾|tw|taiwan|tai wan"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日本|东京|jp|japan"}
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, filter: "(?i)新加坡|狮城|sg|singapore"}
-  - {name: 🇰🇷 韩国节点, type: select, include-all: true, filter: "(?i)韩国|kr|korea"}
-  - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)美国|us|unitedstates|united states"}
   - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan|日本|东京|jp|(?i)japan|新加坡|狮城|sg|(?i)singapore|韩国|kr|(?i)korea))^((?!(美)).)*$"}
-  - {name: 🇭🇰 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: 🇨🇳️ 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan))^((?!(港|日|韩|新|深|美)).)*$"}
-  - {name: 🇯🇵️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|jp|(?i)japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: 🇸🇬️ 新加坡自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|sg|(?i)singapore))^((?!(港|台|日|韩|深|美)).)*$"}
-  - {name: 🇰🇷️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|kr|(?i)korea))^((?!(港|台|日|新|深|美)).)*$"}
-  - {name: 🇺🇸️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|深)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-  - {name: 🌐 全部节点, type: select, include-all: true}
+  - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
+  - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan))^((?!(港|日|韩|新|深|美)).)*$"}
+  - {name: 🇯🇵️ 日本, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|jp|(?i)japan))^((?!(港|台|韩|新|美)).)*$" }
+  - {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|sg|(?i)singapore))^((?!(港|台|日|韩|深|美)).)*$"}
+  - {name: 🇰🇷️ 韩国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|kr|(?i)korea))^((?!(港|台|日|新|深|美)).)*$"}
+  - {name: 🇺🇸️ 美国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|深)).)*$"}
+  - {name: ♻️ 自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
+  - {name: 🌐 全部, type: select, include-all: true}
 
 # 规则定义部分
 rules:  # 顺序有优先级，上面的优先
