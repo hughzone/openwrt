@@ -188,6 +188,7 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
 rules:  # 顺序有优先级，上面的优先
   - RULE-SET,Direct2,🟢 直连  # 私有直连规则
   - RULE-SET,private_domain,🟢 直连  # 私有域名规则，通常用于本地局域网访问或私有 DNS 解析
+  - RULE-SET,AI2,🤖 Ai  # 私有Ai规则
   - RULE-SET,Proxy2,🚀 节点选择  # 私有代理规则
   - RULE-SET,apple_domain,🍎 Apple  # Apple 相关服务，如 App Store、iCloud、Apple Music 等 
   - RULE-SET,proxylite,🚀 节点选择  # 代理选择规则集，适用于需要代理访问的流量
@@ -221,6 +222,7 @@ rule-anchor:
 rule-providers: 
   Direct2: {!!merge <<: *class, url: "https://raw.githubusercontent.com/hughzone/clash/refs/heads/main/Direct2.list"}
   private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
+  AI2: {!!merge <<: *class, url: "https://raw.githubusercontent.com/hughzone/clash/refs/heads/main/AI2.list"}  
   Proxy2: {!!merge <<: *class, url: "https://raw.githubusercontent.com/hughzone/clash/refs/heads/main/Proxy2.list"}
   proxylite: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
   ai: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-chat-!cn.mrs" }
