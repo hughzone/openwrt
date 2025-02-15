@@ -2,7 +2,7 @@
 proxy-providers:
   机场订阅名称:  # 机场订阅名称（需替换），名称不能重复
     type: http  # 使用 HTTP 类型获取订阅
-    interval: 1800  # 每*秒更新一次订阅
+    interval: 86400  # 每*秒更新一次订阅
     health-check:  # 订阅健康检查
       enable: true  # 启用健康检查
       url: https://www.gstatic.com/generate_204  # 使用 Google 的 204 页面检查
