@@ -8,10 +8,11 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204  # 使用 Google 的 204 页面检查
       interval: 300  # 每*秒检查一次
     proxy: 🟢 直连  # 订阅下载时使用直连
-    url: "机场订阅地址”  # 机场订阅地址（需替换）
-	override:
-		skip-cert-verify:true  # 跳过 HTTPS 证书验证
-		udp:true  # 启用 UDP 代理支持
+    url: "机场订阅地址"  # 机场订阅地址（需替换）
+    override:
+      skip-cert-verify: true
+      udp: true
+
 
 # 设置全局 User-Agent，用于下载订阅时指定 UA
 global-ua: clash.meta
@@ -75,7 +76,7 @@ sniffer:
     - +.v2ex.com  # 强制嗅探的域名
   skip-domain:
     - "dlg.io.mi.com"  # 跳过嗅探的域名
-	- "Mijia Cloud"
+    - "Mijia Cloud"
     - "+.push.apple.com"
     - "+.apple.com"
 
@@ -91,12 +92,10 @@ tun:
   auto-detect-interface: true  # 自动检测网络接口
 
 # DNS 模块
-# 主要用于解析域名，支持 Fake-IP 和直接解析
-# Clash 可以劫持 DNS 请求，以提高解析的稳定性和可靠性
 dns:
   enable: true  # 启用 Clash 内置 DNS 解析
   listen: 0.0.0.0:1053  # 监听 1053 端口
-  ipv6: true  # 启用 IPv6 解析
+  ipv6: true  # 启用 IPv6 解析（会自动调整）
   respect-rules: true  # 遵循规则
   enhanced-mode: fake-ip  # 使用 Fake-IP 模式
   fake-ip-range: 28.0.0.1/8  # Fake-IP 地址范围
@@ -125,11 +124,29 @@ dns:
     - 119.29.29.29
   nameserver-policy: # 根据规则集设置不同的 DNS 服务器
     "rule-set:cn_domain,private_domain": # 对于规则集 cn_domain 和 private_domain 匹配的域名，使用以下 DNS 服务器
-    - 223.5.5.5
-    - 119.29.29.29
+      - 223.5.5.5
+      - 119.29.29.29
     "rule-set:geolocation-!cn": # 对于规则集 geolocation-!cn 匹配的域名，使用以下 DNS 服务器
       - "https://dns.cloudflare.com/dns-query" # Cloudflare DNS
       - "https://dns.google/dns-query" # Google DNS
+  fallback:
+    - "https://dns.cloudflare.com/dns-query"
+    - "https://dns.google/dns-query"
+    - 8.8.8.8
+    - 1.1.1.1
+    - "[2001:4860:4860::8888]" # Google IPv6 DNS
+    - "[2606:4700:4700::1111]" # Cloudflare IPv6 DNS
+  fallback-filter:
+    geoip: true  # 仅接受符合 geoip 规则的 IP
+    geoip-code: CN  # 限制解析的 IP 地址属于中国
+    ipcidr:
+      - 2400::/12  # 只允许中国常见的 IPv6 地址
+    domain:
+      - "+.google.com"
+      - "+.youtube.com"
+      - "+.facebook.com"
+      - "+.twitter.com"
+      - "+.cloudflare.com"
 
 # 定义直接连接的代理
 proxies:
