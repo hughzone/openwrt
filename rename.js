@@ -21,20 +21,20 @@ const {
   debug = false,
   clear = false,
   flag: addflag = false,
-  nm = false,
+  name: FNAMERaw, // 此处订阅组名参数，如果传入则优先使用
   fgf,
   sn,
-  name: FNAMERaw,
   blkey,
   blockquic: blockquicRaw,
   in: inParam,
   out: outParam,
 } = inArg;
 
-const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符（旧逻辑保留）
-const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符（旧逻辑保留）
-const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw); // 订阅组名
-const BLKEY = blkey === undefined ? "" : decodeURI(blkey); // 保留关键词参数
+const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符
+const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符
+// 如果未传入订阅组名参数，则后续将使用节点自身的 _subName
+const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw);
+const BLKEY = blkey === undefined ? "" : decodeURI(blkey);
 const blockquic = blockquicRaw === undefined ? "" : decodeURI(blockquicRaw);
 
 // 定义输入/输出类型映射（支持中文、英文缩写、英文全称、国旗）
@@ -252,12 +252,10 @@ function operator(pro) {
     e.baseName = baseName; // 保存基础节点名，后续用于添加序号和最终组装
   });
 
-  // 调用 jxh 函数，根据基础节点名分组，为相同名称的节点添加序号，并组装最终名称：
-  // 最终名称格式：订阅组名 + "·" + 基础节点名 + 序号 + (存在倍率则 "×" + 倍率)
+  // 调用 jxh 函数，根据基础节点名分组，为相同名称的节点添加序号，并组装最终名称
   jxh(pro);
 
-  // 以下原有排序、过滤逻辑保持不变（如有需要可调整顺序）
-  // if (numone) oneP(pro);  // 取消单节点去除序号，如需保留序号则不调用 oneP
+  // 其他排序和过滤逻辑保持不变
   if (blpx) pro = fampx(pro);
   if (key) pro = pro.filter(e => !keyb.test(e.name));
   return pro;
@@ -284,6 +282,7 @@ function getList(arg) {
 /**
  * 对节点数组进行分组，为相同基础节点名的节点添加序号，并组装最终名称
  * 最终名称格式：订阅组名 + "·" + 基础节点名 + 序号 + (若存在倍率则 "×" + 倍率)
+ * 如果订阅组名参数（FNAME）为空，则优先采用节点的 _subName 属性
  * @param {Array} nodes 节点数组
  * @returns {Array} 更新后的节点数组
  */
@@ -299,7 +298,9 @@ function jxh(nodes) {
   Object.keys(groups).forEach(key => {
     groups[key].forEach((node, idx) => {
       const serial = String(idx + 1).padStart(2, "0");
-      node.name = FNAME + "·" + key + serial + (node.multiplier ? "×" + node.multiplier : "");
+      // 优先使用节点的 _subName，如为空再使用 FNAME 参数
+      const subName = node._subName || FNAME;
+      node.name = subName + "·" + key + serial + (node.multiplier ? "×" + node.multiplier : "");
     });
   });
   return nodes;
