@@ -25,18 +25,15 @@ const {
   fgf,
   sn,
   name: FNAMERaw,
-  subname, // 新增参数：订阅名
   blkey,
   blockquic: blockquicRaw,
   in: inParam,
   out: outParam,
 } = inArg;
 
-const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符
-const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符
-const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw); // 原机场前缀名称（已不再使用）
-// 新增：订阅名称，用于输出节点前缀
-const SUBNAME = subname === undefined ? "" : decodeURI(subname);
+const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符（旧逻辑保留）
+const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符（旧逻辑保留）
+const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw); // 订阅组名
 const BLKEY = blkey === undefined ? "" : decodeURI(blkey); // 保留关键词参数
 const blockquic = blockquicRaw === undefined ? "" : decodeURI(blockquicRaw);
 
@@ -64,7 +61,7 @@ const EN = ['HK','MO','TW','JP','KR','SG','US','GB','FR','DE','AU','AE','AF','AL
 const ZH = ['香港','澳门','台湾','日本','韩国','新加坡','美国','英国','法国','德国','澳大利亚','阿联酋','阿富汗','阿尔巴尼亚','阿尔及利亚','安哥拉','阿根廷','亚美尼亚','奥地利','阿塞拜疆','巴林','孟加拉国','白俄罗斯','比利时','伯利兹','贝宁','不丹','玻利维亚','波斯尼亚和黑塞哥维那','博茨瓦纳','巴西','英属维京群岛','文莱','保加利亚','布基纳法索','布隆迪','柬埔寨','喀麦隆','加拿大','佛得角','开曼群岛','中非共和国','乍得','智利','哥伦比亚','科摩罗','刚果(布)','刚果(金)','哥斯达黎加','克罗地亚','塞浦路斯','捷克','丹麦','吉布提','多米尼加共和国','厄瓜多尔','埃及','萨尔瓦多','赤道几内亚','厄立特里亚','爱沙尼亚','埃塞俄比亚','斐济','芬兰','加蓬','冈比亚','格鲁吉亚','加纳','希腊','格陵兰','危地马拉','几内亚','圭亚那','海地','洪都拉斯','匈牙利','冰岛','印度','印尼','伊朗','伊拉克','爱尔兰','马恩岛','以色列','意大利','科特迪瓦','牙买加','约旦','哈萨克斯坦','肯尼亚','科威特','吉尔吉斯斯坦','老挝','拉脱维亚','黎巴嫩','莱索托','利比里亚','利比亚','立陶宛','卢森堡','马其顿','马达加斯加','马拉维','马来','马尔代夫','马里','马耳他','毛利塔尼亚','毛里求斯','墨西哥','摩尔多瓦','摩纳哥','蒙古','黑山共和国','摩洛哥','莫桑比克','缅甸','纳米比亚','尼泊尔','荷兰','新西兰','尼加拉瓜','尼日尔','尼日利亚','朝鲜','挪威','阿曼','巴基斯坦','巴拿马','巴拉圭','秘鲁','菲律宾','葡萄牙','波多黎各','卡塔尔','罗马尼亚','俄罗斯','卢旺达','圣马力诺','沙特阿拉伯','塞内加尔','塞尔维亚','塞拉利昂','斯洛伐克','斯洛文尼亚','索马里','南非','西班牙','斯里兰卡','苏丹','苏里南','斯威士兰','瑞典','瑞士','叙利亚','塔吉克斯坦','坦桑尼亚','泰国','多哥','汤加','特立尼达和多巴哥','突尼斯','土耳其','土库曼斯坦','美属维尔京群岛','乌干达','乌克兰','乌拉圭','乌兹别克斯坦','委内瑞拉','越南','也门','赞比亚','津巴布韦','安道尔','留尼汪','波兰','关岛','梵蒂冈','列支敦士登','库拉索','塞舌尔','南极','直布罗陀','古巴','法罗群岛','奥兰群岛','百慕达','东帝汶'];
 
 // prettier-ignore
-const QC = ['Hong Kong','Macao','Taiwan','Japan','Korea','Singapore','United States','United Kingdom','France','Germany','Australia','Dubai','Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Austria','Azerbaijan','Bahrain','Bangladesh','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','British Virgin Islands','Brunei','Bulgaria','Burkina-faso','Burundi','Cambodia','Cameroon','Canada','CapeVerde','CaymanIslands','Central African Republic','Chad','Chile','Colombia','Comoros','Congo-Brazzaville','Congo-Kinshasa','CostaRica','Croatia','Cyprus','Czech Republic','Denmark','Djibouti','Dominican Republic','Ecuador','Egypt','EISalvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','Gabon','Gambia','Georgia','Ghana','Greece','Greenland','Guatemala','Guinea','Guyana','Haiti','Honduras','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Jordan','Kazakstan','Kenya','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Lithuania','Luxembourg','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar(Burma)','Namibia','Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','NorthKorea','Norway','Oman','Pakistan','Panama','Paraguay','Peru','Philippines','Portugal','PuertoRico','Qatar','Romania','Russia','Rwanda','SanMarino','SaudiArabia','Senegal','Serbia','SierraLeone','Slovakia','Slovenia','Somalia','SouthAfrica','Spain','SriLanka','Sudan','Suriname','Swaziland','Sweden','Switzerland','Syria','Tajikstan','Tanzania','Thailand','Togo','Tonga','TrinidadandTobago','Tunisia','Turkey','Turkmenistan','U.S.Virgin Islands','Uganda','Ukraine','Uruguay','Uzbekistan','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe','Andorra','Reunion','Poland','Guam','Vatican','Liechtensteins','Curacao','Seychelles','Antarctica','Gibraltar','Cuba','Faroe Islands','Ahvenanmaa','Bermuda','Timor-Leste'];
+const QC = ['Hong Kong','Macao','Taiwan','Japan','Korea','Singapore','United States','United Kingdom','France','Germany','Australia','Dubai','Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Austria','Azerbaijan','Bahrain','Bangladesh','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','British Virgin Islands','Brunei','Bulgaria','Burkina-faso','Burundi','Cambodia','Cameroon','Canada','CapeVerde','CaymanIslands','Central African Republic','Chad','Chile','Colombia','Comoros','Congo-Brazzaville','Congo-Kinshasa','CostaRica','Croatia','Cyprus','Czech Republic','Denmark','Djibouti','Dominican Republic','Ecuador','Egypt','EISalvador','Equatorial Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','Gabon','Gambia','Georgia','Ghana','Greece','Greenland','Guatemala','Guinea','Guyana','Haiti','Honduras','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Isle of Man','Israel','Italy','Ivory Coast','Jamaica','Jordan','Kazakstan','Kenya','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Lithuania','Luxembourg','Macedonia','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Mauritania','Mauritius','Mexico','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar(Burma)','Namibia','Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','NorthKorea','Norway','Oman','Pakistan','Panama','Paraguay','Peru','Philippines','Portugal','PuertoRico','Qatar','Romania','Russia','Rwanda','SanMarino','SaudiArabia','Senegal','Serbia','SierraLeone','Slovakia','Slovenia','Somalia','SouthAfrica','Spain','SriLanka','Sudan','Suriname','Swaziland','Sweden','Switzerland','Syria','Tajikstan','Tanzania','Thailand','Togo','Tonga','TrinidadandTobago','Tunisia','Turkey','Turkmenistan','U.S.Virgin Islands','Uganda','Ukraine','Uruguay','Uzbekistan','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe'];
 
 // 正则数组，用于匹配名称中的特殊标识（倍率、关键词等）
 const specialRegex = [
@@ -84,8 +81,8 @@ const regexArray = [
   /游戏|game/i, /购物/, /专线/, /LB/, /cloudflare/i, /\budp\b/i, /\bgpt\b/i, /udpn\b/
 ];
 const valueArray = [
-  "2×", "3×", "4×", "5×", "6×", "7×", "8×", "9×", "10×",
-  "20×", "30×", "40×", "50×",
+  "2倍", "3倍", "4倍", "5倍", "6倍", "7倍", "8倍", "9倍", "10倍",
+  "20倍", "30倍", "40倍", "50倍",
   "IPLC", "IEPL",
   "Kern", "Edge", "Pro", "Std", "Exp", "Biz", "Fam",
   "Game", "Buy", "Zx", "LB", "CF", "UDP", "GPT", "UDPN"
@@ -185,8 +182,7 @@ function operator(pro) {
   const BLKEYS = BLKEY ? BLKEY.split("+") : [];
 
   pro.forEach(e => {
-    let bktf = false;
-    const originalName = e.name;
+    const originalName = e.name; // 保存原始名称以便倍率检测
 
     // 使用 rurekey 替换节点名称中的关键词
     Object.keys(rurekey).forEach(ikey => {
@@ -194,7 +190,6 @@ function operator(pro) {
         e.name = e.name.replace(rurekey[ikey], ikey);
 
         if (BLKEY) {
-          bktf = true;
           let BLKEY_REPLACE = "",
             re = false;
           BLKEYS.forEach(item => {
@@ -225,72 +220,44 @@ function operator(pro) {
       delete e["block-quic"];
     }
 
-    // 单独处理未经过 BLKEY 处理的情况
-    if (!bktf && BLKEY) {
-      let BLKEY_REPLACE = "",
-        re = false;
-      BLKEYS.forEach(item => {
-        const [src, replacement] = item.split(">");
-        if (item.includes(">") && e.name.includes(src)) {
-          if (replacement) {
-            BLKEY_REPLACE = replacement;
-            re = true;
+    // 检测倍率信息（仅当原始名称中含有 "×" 或 "倍" 时提取）
+    let multiplier = "";
+    if (/[×倍]/.test(originalName)) {
+      if (blgd) {
+        for (let i = 0; i < regexArray.length; i++) {
+          if (regexArray[i].test(originalName)) {
+            multiplier = valueArray[i];
+            break;
           }
         }
-      });
-      retainKey = re ? BLKEY_REPLACE : BLKEYS.filter(item => e.name.includes(item));
-    }
-
-    // 处理倍率：blgd 与 bl 参数分别匹配不同规则
-    let ikey = "",
-      ikeys = "";
-    if (blgd) {
-      regexArray.forEach((regex, idx) => {
-        if (regex.test(e.name)) {
-          ikeys = valueArray[idx];
-        }
-      });
-    }
-    if (bl) {
-      const match = e.name.match(/((倍率|X|x|×)\D?((\d{1,3}\.)?\d+)\D?)|((\d{1,3}\.)?\d+)(倍|X|x|×)/);
-      if (match) {
-        const rev = match[0].match(/(\d[\d.]*)/)[0];
-        if (rev !== "1") {
-          ikey = rev + "×";
+      }
+      if (bl && !multiplier) {
+        const match = originalName.match(/(\d+(?:\.\d+)?)\s*(?=倍|×)/);
+        if (match) {
+          multiplier = match[1] + "倍";
         }
       }
     }
+    e.multiplier = multiplier; // 存储倍率信息（若未提取到则为空字符串）
 
+    // 使用 Allmap 映射替换节点名称中的部分关键词
     if (!GetK) ObjKA(Allmap);
     const findKey = AMK.find(([k]) => e.name.includes(k));
-
-    // 修改部分：使用订阅名（SUBNAME）作为前缀，置于输出节点的最前面
-    const prefix = SUBNAME;
-
+    let baseName = "";
     if (findKey?.[1]) {
-      const findKeyValue = findKey[1];
-      let usflag = "";
-      if (addflag) {
-        const index = outList.indexOf(findKeyValue);
-        if (index !== -1) {
-          usflag = FG[index];
-          usflag = usflag === "🇹🇼" ? "🇨🇳" : usflag;
-        }
-      }
-      e.name = [prefix, usflag, findKeyValue, retainKey, ikey, ikeys]
-        .filter(Boolean)
-        .join(FGF);
+      baseName = findKey[1];
     } else {
-      e.name = nm ? prefix + FGF + e.name : null;
+      baseName = e.name;
     }
+    e.baseName = baseName; // 保存基础节点名，后续用于添加序号和最终组装
   });
 
-  // 移除名称为空的节点
-  pro = pro.filter(e => e.name !== null);
-
-  // 为相同名称的节点添加序号（如 01、02…）
+  // 调用 jxh 函数，根据基础节点名分组，为相同名称的节点添加序号，并组装最终名称：
+  // 最终名称格式：订阅组名 + "·" + 基础节点名 + 序号 + (存在倍率则 "×" + 倍率)
   jxh(pro);
-  if (numone) oneP(pro);
+
+  // 以下原有排序、过滤逻辑保持不变（如有需要可调整顺序）
+  // if (numone) oneP(pro);  // 取消单节点去除序号，如需保留序号则不调用 oneP
   if (blpx) pro = fampx(pro);
   if (key) pro = pro.filter(e => !keyb.test(e.name));
   return pro;
@@ -315,53 +282,25 @@ function getList(arg) {
 }
 
 /**
- * 对节点数组进行分组，为相同名称的节点添加序号（例如 01、02…）
+ * 对节点数组进行分组，为相同基础节点名的节点添加序号，并组装最终名称
+ * 最终名称格式：订阅组名 + "·" + 基础节点名 + 序号 + (若存在倍率则 "×" + 倍率)
  * @param {Array} nodes 节点数组
  * @returns {Array} 更新后的节点数组
  */
 function jxh(nodes) {
-  const groups = nodes.reduce((acc, cur) => {
-    const group = acc.find(item => item.name === cur.name);
-    if (group) {
-      group.count++;
-      group.items.push({
-        ...cur,
-        name: `${cur.name}${XHFGF}${String(group.count).padStart(2, "0")}`,
-      });
-    } else {
-      acc.push({
-        name: cur.name,
-        count: 1,
-        items: [{ ...cur, name: `${cur.name}${XHFGF}01` }],
-      });
+  const groups = {};
+  nodes.forEach(node => {
+    const key = node.baseName;
+    if (!groups[key]) {
+      groups[key] = [];
     }
-    return acc;
-  }, []);
-
-  const flattened =
-    typeof Array.prototype.flatMap === "function"
-      ? groups.flatMap(item => item.items)
-      : groups.reduce((acc, item) => acc.concat(item.items), []);
-  nodes.splice(0, nodes.length, ...flattened);
-  return nodes;
-}
-
-/**
- * 处理只有单个节点的地区，去除名称尾部的 "01"
- * @param {Array} nodes 节点数组
- * @returns {Array} 更新后的节点数组
- */
-function oneP(nodes) {
-  const groups = nodes.reduce((acc, cur) => {
-    const key = cur.name.replace(/[^A-Za-z0-9\u00C0-\u017F\u4E00-\u9FFF]+\d+$/, "");
-    acc[key] = acc[key] || [];
-    acc[key].push(cur);
-    return acc;
-  }, {});
-  Object.values(groups).forEach(group => {
-    if (group.length === 1 && group[0].name.endsWith("01")) {
-      group[0].name = group[0].name.replace(/[^.]01/, "");
-    }
+    groups[key].push(node);
+  });
+  Object.keys(groups).forEach(key => {
+    groups[key].forEach((node, idx) => {
+      const serial = String(idx + 1).padStart(2, "0");
+      node.name = FNAME + "·" + key + serial + (node.multiplier ? "×" + node.multiplier : "");
+    });
   });
   return nodes;
 }
