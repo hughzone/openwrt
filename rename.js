@@ -3,9 +3,7 @@
  * 用法：Sub-Store 脚本操作添加
  * 
  * 本脚本用于重命名并格式化机场（代理）节点的名称，
- * 最终格式：机场名称作为前缀，后接 "·" ，区域名称、序号和（可选）倍率
- * 示例：如果原始节点中包含倍率，则格式如：机场名·香港01×2；
- *       如果不包含倍率，则格式如：机场名·香港01
+ * 支持自定义输入/输出名称格式、前缀、分隔符、倍率、保留关键词、清理无关信息等。
  */
 
 const inArg = $arguments;
@@ -27,15 +25,18 @@ const {
   fgf,
   sn,
   name: FNAMERaw,
+  subname, // 新增参数：订阅名
   blkey,
   blockquic: blockquicRaw,
   in: inParam,
   out: outParam,
 } = inArg;
 
-const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符（暂不使用）
-const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符（暂不使用）
-const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw); // 机场名称前缀
+const FGF = fgf === undefined ? " " : decodeURI(fgf); // 节点名称各部分之间的分隔符
+const XHFGF = sn === undefined ? " " : decodeURI(sn);  // 国家与序号之间的分隔符
+const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw); // 原机场前缀名称（已不再使用）
+// 新增：订阅名称，用于输出节点前缀
+const SUBNAME = subname === undefined ? "" : decodeURI(subname);
 const BLKEY = blkey === undefined ? "" : decodeURI(blkey); // 保留关键词参数
 const blockquic = blockquicRaw === undefined ? "" : decodeURI(blockquicRaw);
 
@@ -154,13 +155,13 @@ const ObjKA = (map) => {
 
 /**
  * 主处理函数：对传入的代理节点数组进行名称重构和格式化
- * 最终格式：机场名称作为前缀，后接 "·" ，区域名称、序号和（可选）倍率
  * @param {Array} pro 节点数组，每个节点至少包含 name 属性
  * @returns {Array} 处理后的节点数组
  */
 function operator(pro) {
   const Allmap = {};
   const outList = getList(outputName);
+  let retainKey = "";
   const inputList = inname ? [getList(inname)] : [ZH, FG, QC, EN];
 
   // 构造名称映射：将输入数组对应到输出数组
@@ -209,6 +210,7 @@ function operator(pro) {
             } else if (originalName.includes(item)) {
               e.name += " " + item;
             }
+            retainKey = re ? BLKEY_REPLACE : BLKEYS.filter(it => e.name.includes(it));
           });
         }
       }
@@ -223,53 +225,73 @@ function operator(pro) {
       delete e["block-quic"];
     }
 
-    // 新逻辑：构造最终名称格式
-    // 提取区域名称：优先使用映射规则匹配
-    if (!GetK) ObjKA(Allmap);
-    const findKey = AMK.find(([k]) => e.name.includes(k));
-    let regionName = "";
-    if (findKey) {
-      regionName = findKey[1];
-    } else {
-      // 如果没有匹配到区域，则尝试提取连续中文字符作为区域名称
-      const match = e.name.match(/[\u4e00-\u9fa5]+/);
-      regionName = match ? match[0] : e.name;
+    // 单独处理未经过 BLKEY 处理的情况
+    if (!bktf && BLKEY) {
+      let BLKEY_REPLACE = "",
+        re = false;
+      BLKEYS.forEach(item => {
+        const [src, replacement] = item.split(">");
+        if (item.includes(">") && e.name.includes(src)) {
+          if (replacement) {
+            BLKEY_REPLACE = replacement;
+            re = true;
+          }
+        }
+      });
+      retainKey = re ? BLKEY_REPLACE : BLKEYS.filter(item => e.name.includes(item));
     }
 
-    // 处理倍率：根据 blgd 与 bl 参数进行匹配
-    // 如果原始节点中包含倍率信息，则提取，否则保持为空
-    let multiplierStr = "";
+    // 处理倍率：blgd 与 bl 参数分别匹配不同规则
+    let ikey = "",
+      ikeys = "";
     if (blgd) {
       regexArray.forEach((regex, idx) => {
         if (regex.test(e.name)) {
-          multiplierStr = valueArray[idx];
+          ikeys = valueArray[idx];
         }
       });
     }
-    if (bl && !multiplierStr) {
+    if (bl) {
       const match = e.name.match(/((倍率|X|x|×)\D?((\d{1,3}\.)?\d+)\D?)|((\d{1,3}\.)?\d+)(倍|X|x|×)/);
       if (match) {
         const rev = match[0].match(/(\d[\d.]*)/)[0];
         if (rev !== "1") {
-          multiplierStr = rev + "×";
+          ikey = rev + "×";
         }
       }
     }
-    // 如果原始节点中未匹配到倍率，则 multiplierStr 保持为空，不加入名称
 
-    // 将提取的区域名称和倍率存入节点对象，供后续分组使用
-    e.regionName = regionName;
-    e.multiplierStr = multiplierStr;
-    // 临时设置 e.name 为区域+倍率（序号将在分组时添加）
-    e.name = regionName + multiplierStr;
+    if (!GetK) ObjKA(Allmap);
+    const findKey = AMK.find(([k]) => e.name.includes(k));
+
+    // 修改部分：使用订阅名（SUBNAME）作为前缀，置于输出节点的最前面
+    const prefix = SUBNAME;
+
+    if (findKey?.[1]) {
+      const findKeyValue = findKey[1];
+      let usflag = "";
+      if (addflag) {
+        const index = outList.indexOf(findKeyValue);
+        if (index !== -1) {
+          usflag = FG[index];
+          usflag = usflag === "🇹🇼" ? "🇨🇳" : usflag;
+        }
+      }
+      e.name = [prefix, usflag, findKeyValue, retainKey, ikey, ikeys]
+        .filter(Boolean)
+        .join(FGF);
+    } else {
+      e.name = nm ? prefix + FGF + e.name : null;
+    }
   });
 
-  // 对节点进行分组，为相同区域和倍率的节点添加序号，构造最终名称格式
-  pro = jxh(pro);
+  // 移除名称为空的节点
+  pro = pro.filter(e => e.name !== null);
 
-  // 如设置 blpx 参数，对节点进行特殊倍率标识排序
+  // 为相同名称的节点添加序号（如 01、02…）
+  jxh(pro);
+  if (numone) oneP(pro);
   if (blpx) pro = fampx(pro);
-  // 如设置 key 参数，根据 keyb 过滤节点
   if (key) pro = pro.filter(e => !keyb.test(e.name));
   return pro;
 }
@@ -293,22 +315,53 @@ function getList(arg) {
 }
 
 /**
- * 对节点数组进行分组，为相同区域和倍率的节点添加序号（例如 01、02…），
- * 并构造最终名称： 机场名称 + "·" + 区域名称 + 序号 + （可选）倍率
- * 示例：如果有倍率：机场名·香港01×2；如果无倍率：机场名·香港01
+ * 对节点数组进行分组，为相同名称的节点添加序号（例如 01、02…）
  * @param {Array} nodes 节点数组
  * @returns {Array} 更新后的节点数组
  */
 function jxh(nodes) {
-  const groups = {};
-  nodes.forEach(cur => {
-    const groupKey = cur.regionName + "|" + cur.multiplierStr;
-    if (!groups[groupKey]) {
-      groups[groupKey] = 0;
+  const groups = nodes.reduce((acc, cur) => {
+    const group = acc.find(item => item.name === cur.name);
+    if (group) {
+      group.count++;
+      group.items.push({
+        ...cur,
+        name: `${cur.name}${XHFGF}${String(group.count).padStart(2, "0")}`,
+      });
+    } else {
+      acc.push({
+        name: cur.name,
+        count: 1,
+        items: [{ ...cur, name: `${cur.name}${XHFGF}01` }],
+      });
     }
-    groups[groupKey]++;
-    const seq = String(groups[groupKey]).padStart(2, "0");
-    cur.name = FNAME + "·" + cur.regionName + seq + cur.multiplierStr;
+    return acc;
+  }, []);
+
+  const flattened =
+    typeof Array.prototype.flatMap === "function"
+      ? groups.flatMap(item => item.items)
+      : groups.reduce((acc, item) => acc.concat(item.items), []);
+  nodes.splice(0, nodes.length, ...flattened);
+  return nodes;
+}
+
+/**
+ * 处理只有单个节点的地区，去除名称尾部的 "01"
+ * @param {Array} nodes 节点数组
+ * @returns {Array} 更新后的节点数组
+ */
+function oneP(nodes) {
+  const groups = nodes.reduce((acc, cur) => {
+    const key = cur.name.replace(/[^A-Za-z0-9\u00C0-\u017F\u4E00-\u9FFF]+\d+$/, "");
+    acc[key] = acc[key] || [];
+    acc[key].push(cur);
+    return acc;
+  }, {});
+  Object.values(groups).forEach(group => {
+    if (group.length === 1 && group[0].name.endsWith("01")) {
+      group[0].name = group[0].name.replace(/[^.]01/, "");
+    }
   });
   return nodes;
 }
