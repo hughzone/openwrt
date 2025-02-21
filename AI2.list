@@ -24,6 +24,7 @@ DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
 DOMAIN-SUFFIX,generativeai.google
 DOMAIN-SUFFIX,vertexai.googleapis.com
+DOMAIN-SUFFIX,grok
 
 # 微软、Meta及其他主流提供商提供的AI服务
 DOMAIN-SUFFIX,bing.com
