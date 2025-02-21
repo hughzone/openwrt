@@ -250,30 +250,18 @@ function operator(pro) {
             }
         }
 
+
     if (!GetK) ObjKA(Allmap);
     const findKey = AMK.find(([k]) => e.name.includes(k));
 
     // 构造最终节点名称
         if (findKey?.[1]) {
             const findKeyValue = findKey[1];
-             //国旗
-            let usflag = "";
-            if (addflag) {
-                const index = outList.indexOf(findKeyValue);
-                if (index !== -1) {
-                    usflag = FG[index];
-                    usflag = usflag === "🇹🇼" ? "🇨🇳" : usflag;
-                }
-            }
 
-            // 组装名称，包括：订阅名 + | + 节点名 + 序号 + 倍率  ,  这里先不加序号和倍率
+            // 组装名称，包括：订阅名|节点名
             let finalName = [
-                subscriptionName,   // 订阅组名
-                FNAME,             //前缀名称
-                usflag,              //国旗
-                findKeyValue,       // 节点名（已替换为标准名称）
-                retainKey,          // 保留关键词
-
+                subscriptionName,      // 订阅组名
+                findKeyValue,          // 节点名（已替换为标准名称）
             ].filter(Boolean).join(FGF); // 使用 FGF 连接
 
             e.name = finalName; // 先保存不带序号和倍率的名称
@@ -282,19 +270,19 @@ function operator(pro) {
         } else {
             e.name = null; // 如果没有匹配的地区，则设置为 null, 后面会过滤掉
         }
-    });
+  });
 
-    // 移除名称为空的节点
-    pro = pro.filter(e => e.name !== null);
+  // 移除名称为空的节点
+  pro = pro.filter(e => e.name !== null);
 
-    // 为相同名称的节点添加序号（如 01、02…）
-    jxh(pro);  // jxh 函数现在会处理序号和倍率
+  // 为相同名称的节点添加序号（如 01、02…）
+  jxh(pro);  // jxh 函数现在会处理序号和倍率
 
-    if (numone) oneP(pro);
-    if (blpx) pro = fampx(pro);
-    if (key) pro = pro.filter(e => !keyb.test(e.name));
+  if (numone) oneP(pro);
+  if (blpx) pro = fampx(pro);
+  if (key) pro = pro.filter(e => !keyb.test(e.name));
 
-    return pro;
+  return pro;
 }
 
 /**
@@ -330,7 +318,7 @@ function jxh(nodes) {
       group.items.push({
         ...cur,
         // 在这里添加序号和倍率
-        name: `${baseName}${XHFGF}${String(group.count).padStart(2, "0")}${cur.multiplier ? FGF + cur.multiplier : ""}`,
+        name: `${baseName}${XHFGF}${String(group.count).padStart(2, "0")}${formatMultiplier(cur.multiplier)}`,
       });
     } else {
       acc.push({
@@ -338,8 +326,8 @@ function jxh(nodes) {
         count: 1,
         items: [{
           ...cur,
-           // 初始节点也添加序号和倍率
-          name: `${baseName}${XHFGF}01${cur.multiplier ? FGF + cur.multiplier : ""}`,
+          // 初始节点也添加序号和倍率
+          name: `${baseName}${XHFGF}01${formatMultiplier(cur.multiplier)}`,
         }],
       });
     }
@@ -350,6 +338,21 @@ function jxh(nodes) {
   nodes.length = 0; // 清空 nodes
   nodes.push(...flattened); // 将新节点放回
   return nodes;
+}
+
+
+/**
+ * 格式化倍率，显示为 "×几"，整数倍率不显示 ".0"
+ * @param {string} multiplier 倍率字符串 (例如 "2×", "1.5×", "")
+ * @returns {string} 格式化后的倍率字符串 (例如 "|×2", "|×1.5", "")
+ */
+function formatMultiplier(multiplier) {
+    if (!multiplier) {
+        return ""; // 没有倍率时不显示
+    }
+    const num = parseFloat(multiplier.replace("×", ""));
+    const formattedNum = Number.isInteger(num) ? num : num.toFixed(1); // 整数不保留小数位，小数保留一位
+    return FGF + "×" + formattedNum; // 返回 "|×几" 格式
 }
 
 
