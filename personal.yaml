@@ -172,6 +172,7 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: ✈️ Speedtest,!!merge <<: *pr}
   - {name: 💶 PayPal,!!merge <<: *pr}
   - {name: 🍎 Apple, type: select, proxies: [🟢 直连,🚀 节点选择]}
+  - {name: 🎮 Steam, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
   - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan|日本|东京|jp|(?i)japan|新加坡|狮城|sg|(?i)singapore|韩国|kr|(?i)korea))^((?!(美)).)*$"}
@@ -190,7 +191,8 @@ rules:  # 顺序有优先级，上面的优先
   - RULE-SET,private_domain,🟢 直连  # 私有域名规则，通常用于本地局域网访问或私有 DNS 解析
   - RULE-SET,AI2,🤖 Ai  # 私有Ai规则
   - RULE-SET,Proxy2,🚀 节点选择  # 私有代理规则
-  - RULE-SET,apple_domain,🍎 Apple  # Apple 相关服务，如 App Store、iCloud、Apple Music 等 
+  - RULE-SET,apple_domain,🍎 Apple  # Apple 相关服务，如 App Store、iCloud、Apple Music 等
+  - RULE-SET,steam_domain,🎮 Steam  # Steam 相关服务
   - RULE-SET,proxylite,🚀 节点选择  # 代理选择规则集，适用于需要代理访问的流量
   - RULE-SET,ai,🤖 Ai  # AI 相关服务，如 ChatGPT、Gemini、Copilot 等 
   - RULE-SET,github_domain,👨🏿‍💻 GitHub  # GitHub 相关域名，适用于代码托管及开发者社区
@@ -235,6 +237,7 @@ rule-providers:
   onedrive_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
   microsoft_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   apple_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
+  steam_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"}
   speedtest_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ookla-speedtest.mrs"}
   tiktok_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"}
   gfw_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"}
