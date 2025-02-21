@@ -119,6 +119,7 @@ payload:
   - DOMAIN-KEYWORD,grok
   - DOMAIN-SUFFIX,x.ai
   - DOMAIN-SUFFIX,meta.ai
+  - DOMAIN-SUFFIX,grok.com
 
 # Other AI Services
   - DOMAIN-SUFFIX,lmsys.org
