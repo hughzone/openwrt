@@ -175,13 +175,13 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🎮 Steam, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan|日本|东京|jp|(?i)japan|新加坡|狮城|sg|(?i)singapore|韩国|kr|(?i)korea))^((?!(美)).)*$"}
-  - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan))^((?!(港|日|韩|新|深|美)).)*$"}
-  - {name: 🇯🇵️ 日本, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|jp|(?i)japan))^((?!(港|台|韩|新|美)).)*$" }
-  - {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|sg|(?i)singapore))^((?!(港|台|日|韩|深|美)).)*$"}
-  - {name: 🇰🇷️ 韩国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|kr|(?i)korea))^((?!(港|台|日|新|深|美)).)*$"}
-  - {name: 🇺🇸️ 美国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|深)).)*$"}
+  - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan|日本|东京|jp|(?i)japan|新加坡|狮城|sg|(?i)singapore|韩国|kr|(?i)korea))"}
+  - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|(?i)Hong))"}
+  - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan))"}
+  - {name: 🇯🇵️ 日本, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|jp|(?i)japan))" }
+  - {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|sg|(?i)singapore))"}
+  - {name: 🇰🇷️ 韩国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|kr|(?i)korea))"}
+  - {name: 🇺🇸️ 美国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))"}
   - {name: ♻️ 自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🌐 全部, type: select, include-all: true}
 
