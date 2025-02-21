@@ -241,10 +241,10 @@ function operator(pro) {
             });
         }
         if (bl) {
-            const match = e.name.match(/((倍率|X|x|×)\D?((\d{1,3}\.)?\d+)\D?)|((\d{1,3}\.)?\d+)(倍|X|x|×)/);
+            const match = e.name.match(/(?:[xX×])\D*?([\d.]+)|([\d.]+)(?:倍)/i); // 修改后的正则表达式
             if (match) {
-                const rev = match[0].match(/(\d[\d.]*)/)[0];
-                if (rev !== "1") {
+                let rev = match[1] || match[2]; // 从捕获组 1 或 2 中获取数字
+                if (rev && rev !== "1") {
                     multiplier = rev + "×";
                 }
             }
