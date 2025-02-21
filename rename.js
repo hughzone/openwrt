@@ -1,5 +1,5 @@
 /**
- * 更新日期：2025-02-17 (最终修正版)
+ * 更新日期：2025-02-21
  * 用法：Sub-Store 脚本操作添加
  *
  * 本脚本用于重命名并格式化机场（代理）节点的名称。
@@ -27,7 +27,7 @@ const {
   out: outParam,
 } = inArg;
 
-const FGF = fgf === undefined ? "·" : decodeURI(fgf);
+const FGF = fgf === undefined ? "|" : decodeURI(fgf);
 const XHFGF = sn === undefined ? "" : decodeURI(sn);
 const FNAME = FNAMERaw === undefined ? "" : decodeURI(FNAMERaw);
 const BLKEY = blkey === undefined ? "" : decodeURI(blkey);
@@ -266,7 +266,7 @@ function operator(pro) {
                 }
             }
 
-            // 组装名称，包括：订阅名 + · + 节点名 + 序号 + 倍率  ,  这里先不加序号和倍率
+            // 组装名称，包括：订阅名 + | + 节点名 + 序号 + 倍率  ,  这里先不加序号和倍率
             let finalName = [
                 subscriptionName,   // 订阅组名
                 FNAME,             //前缀名称
