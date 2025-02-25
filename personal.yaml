@@ -180,7 +180,7 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG))"}
   - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan))"}
   - {name: 🇯🇵️ 日本, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|JP|🇯🇵|(?i)japan))" }
-- {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|SG|🇸🇬|(?i)singapore))"}
+  - {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|SG|🇸🇬|(?i)singapore))"}
   - {name: 🇰🇷️ 韩国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|KR|🇰🇷|(?i)korea))"}
   - {name: 🇺🇸️ 美国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|🇺🇸|(?i)States|(?i)America))"}
   - {name: ♻️ 自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
