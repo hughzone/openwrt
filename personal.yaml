@@ -175,7 +175,7 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🎮 Steam, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|伊朗|叙利亚|俄罗斯|香港|HK|(?i)Hong|澳门|MO|Macao)).)*$"}
+  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|伊朗|叙利亚|俄罗斯|香港|HK|(?i)Hong|澳门|MO|(?i)Macao)).)*$"}
   - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan|日本|东京|jp|(?i)japan|新加坡|狮城|sg|(?i)singapore|韩国|kr|(?i)korea))"}
   - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|(?i)Hong))"}
   - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|tw|(?i)taiwan|tai wan))"}
