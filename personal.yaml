@@ -155,14 +155,13 @@ proxies:
   udp: true
 
 # 锚点（复用策略组配置）
-pr: &pr {type: select, proxies: [🚀 节点选择,♻️ 自动,♻️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🌐 全部,🛸️ Ai服务,🟢 直连]}
+pr: &pr {type: select, proxies: [🚀 节点选择,🌐 自动,🗺️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🛸️ Ai服务,🖐 手动,🟢 直连]}
 
 # 策略组（流量走向选择）
 proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
-  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动,♻️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🌐 全部,🟢 直连]}
   - {name: 📹 YouTube,!!merge <<: *pr}  # 复用 pr 代理列表
   - {name: 🍀 Google,!!merge <<: *pr}
-  - {name: 🤖 Ai, type: select, proxies: [🛸️ Ai服务,♻️ 台日新韩,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🌐 全部]}
+  - {name: 🤖 Ai, type: select, proxies: [🛸️ Ai服务,🗺️ 台日新韩,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🖐 手动]}
   - {name: 👨🏿‍💻 GitHub,!!merge <<: *pr}
   - {name: 🐬 OneDrive,!!merge <<: *pr}
   - {name: 🪟 Microsoft,!!merge <<: *pr}
@@ -175,16 +174,17 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🎮 Steam, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|伊朗|叙利亚|俄罗斯|香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG|澳门|🇲🇴|MO|(?i)Macao)).)*$"}
-  - {name: ♻️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan|日本|东京|JP|🇯🇵|(?i)japan|新加坡|狮城|SG|🇸🇬|(?i)singapore|韩国|KR|🇰🇷|(?i)korea))"}
+  - {name: 🚀 节点选择, type: select, proxies: [🌐 自动,🗺️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🖐 手动,🟢 直连]}
+  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|🇰🇵|伊朗|🇮🇷|叙利亚|🇸🇾|俄罗斯|🇷🇺|香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG|澳门|🇲🇴|MO|(?i)Macao)).)*$"}
+  - {name: 🗺️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan|日本|东京|JP|🇯🇵|(?i)japan|新加坡|狮城|SG|🇸🇬|(?i)singapore|韩国|KR|🇰🇷|(?i)korea))"}
   - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG))"}
   - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan))"}
   - {name: 🇯🇵️ 日本, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|东京|JP|🇯🇵|(?i)japan))" }
   - {name: 🇸🇬️ 新加坡, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新加坡|狮城|SG|🇸🇬|(?i)singapore))"}
   - {name: 🇰🇷️ 韩国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|KR|🇰🇷|(?i)korea))"}
   - {name: 🇺🇸️ 美国, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|🇺🇸|(?i)States|(?i)America))"}
-  - {name: ♻️ 自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-  - {name: 🌐 全部, type: select, include-all: true}
+  - {name: 🌐 自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
+  - {name: 🖐 手动, type: select, include-all: true}
 
 # 规则定义部分
 rules:  # 顺序有优先级，上面的优先
