@@ -175,7 +175,7 @@ proxy-groups:  # select：手动，fallback:故障转移，url-test:自动
   - {name: 🎯 全球直连, type: select, proxies: [🟢 直连,🚀 节点选择]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
   - {name: 🚀 节点选择, type: select, proxies: [🌐 自动,🗺️ 台日新韩,🇭🇰 香港,🇨🇳️ 台湾,🇯🇵️ 日本,🇸🇬️ 新加坡,🇰🇷️ 韩国,🇺🇸️ 美国,🖐 手动,🟢 直连]}
-  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|🇰🇵|伊朗|🇮🇷|叙利亚|🇸🇾|俄罗斯|🇷🇺|香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG|澳门|🇲🇴|MO|(?i)Macao|(?i)CFnat|随机)).)*$"}
+  - {name: 🛸️ Ai服务, type: url-test, include-all: true, tolerance: 5, interval: 300, filter: "^((?!(直连|中国|大陆|朝鲜|🇰🇵|伊朗|🇮🇷|叙利亚|🇸🇾|俄罗斯|🇷🇺|香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG|澳门|🇲🇴|MO|(?i)Macao|越南|🇻🇳|VN|(?i)Vietnam|(?i)CFnat|随机)).)*$"}
   - {name: 🗺️ 台日新韩, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan|日本|东京|JP|🇯🇵|(?i)japan|新加坡|狮城|SG|🇸🇬|(?i)singapore|韩国|KR|🇰🇷|(?i)korea))"}
   - {name: 🇭🇰 香港, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|HK|🇭🇰|(?i)Hongkong|(?i)HONG KONG))"}
   - {name: 🇨🇳️ 台湾, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|TW|(?i)taiwan|(?i)tai wan))"}
