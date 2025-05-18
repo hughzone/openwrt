@@ -21,11 +21,3 @@ DOMAIN-KEYWORD,syyn
 DOMAIN-KEYWORD,sms-activate
 
 # strava直连配置
-DOMAIN-KEYWORD,strava
-DOMAIN-SUFFIX,strava.com
-DOMAIN-SUFFIX,staticmap.strava.com
-DOMAIN-SUFFIX,media.strava.com
-DOMAIN-SUFFIX,img.strava.com
-DOMAIN-SUFFIX,www.strava.com
-DOMAIN-SUFFIX,analytics.strava.com
-DOMAIN-SUFFIX,strava.mapcdn.com
