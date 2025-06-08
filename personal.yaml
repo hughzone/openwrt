@@ -42,7 +42,7 @@ geox-url: # GeoData 文件的下载链接，已更新为更可靠的源
 # 控制面板相关设置
 external-controller: 0.0.0.0:9090  # 允许所有 IP 访问控制面板
 secret: ""  # 控制面板密码（为空表示无密码）
-external-ui: "/etc/ui"  # 控制面板 UI 目录
+external-ui: "/etc/openclash/ui"  # 控制面板 UI 目录
 external-ui-name: zashboard  # UI 名称
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"  # UI 下载地址
 
