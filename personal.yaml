@@ -7,7 +7,7 @@ proxy-providers:
       enable: true  # 启用健康检查
       url: https://www.gstatic.com/generate_204  # 使用 Google 的 204 页面检查
       interval: 300  # 每*秒检查一次
-    proxy: 🟢 直连  # 订阅下载时使用直连
+    proxy: "🟢 直连"  # 订阅下载时使用直连
     url: "机场订阅地址"  # 机场订阅地址（需替换）
     override:
       skip-cert-verify: true
