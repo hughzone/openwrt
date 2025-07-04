@@ -1,59 +1,46 @@
 # 代理补充列表(通过代理访问IP列表)
 
 # 个人配置
-DOMAIN-SUFFIX,copilot.microsoft.com
-DOMAIN-SUFFIX,obsidian.md
-DOMAIN-SUFFIX,gpt.ge
-DOMAIN-KEYWORD,qichiyu
-
-# IP段匹配
-IP-CIDR,142.171.133.131/32,no-resolve
-IP-CIDR,103.115.43.2/32,no-resolve
+- DOMAIN,copilot.microsoft.com
+- DOMAIN,obsidian.md
+- DOMAIN,gpt.ge
+- DOMAIN,qichiyu  # 需要替换为更精确的 DOMAIN 规则
 
 # 国外DNS
-DOMAIN-SUFFIX,dns.google
-DOMAIN-SUFFIX,1dot1dot1dot1.cloudflare-dns.com
-DOMAIN-SUFFIX,dot.sb
-DOMAIN-SUFFIX,dns.umbrella.com
-DOMAIN-SUFFIX,dns.quad9.net
-DOMAIN-SUFFIX,dns.google
-DOMAIN-SUFFIX,cloudflare-dns.com
-DOMAIN-SUFFIX,doh.dns.sb
-DOMAIN-SUFFIX,doh.opendns.com
-DOMAIN-SUFFIX,dns.quad9.net
-DOMAIN-SUFFIX,hk-hkg.doh.sb
+- DOMAIN,dns.google
+- DOMAIN,1dot1dot1dot1.cloudflare-dns.com
+- DOMAIN,dot.sb
+- DOMAIN,dns.umbrella.com
+- DOMAIN,dns.quad9.net
+- DOMAIN,cloudflare-dns.com
+- DOMAIN,doh.dns.sb
+- DOMAIN,doh.opendns.com
+- DOMAIN,dns.quad9.net
+- DOMAIN,hk-hkg.doh.sb
 
-DOMAIN-SUFFIX,6bcloud.top
-DOMAIN-SUFFIX,viptwo.top
-DOMAIN-SUFFIX,followme.com
-DOMAIN-SUFFIX,followme.ceo
-DOMAIN-SUFFIX,whatsmydns.me
-DOMAIN-SUFFIX,hostloc.net
-DOMAIN-SUFFIX,tmgm.com
-DOMAIN-SUFFIX,plexapp.com
-DOMAIN-SUFFIX,plexmediaserver.com
-DOMAIN-SUFFIX,plex.tv
-DOMAIN-SUFFIX,ip111.cn
-DOMAIN-SUFFIX,ipinfo.io
-DOMAIN-SUFFIX,ip-score.com
-DOMAIN-SUFFIX,dnsleaktest.com
-DOMAIN-SUFFIX,asiassn.com
-DOMAIN-SUFFIX,ipleak.net
-DOMAIN-SUFFIX,browserleaks.com
-DOMAIN-SUFFIX,polivera.ai
-DOMAIN-SUFFIX,asiassn.com
-DOMAIN-SUFFIX,mmcks.top
-DOMAIN-SUFFIX,needay.xyz
-DOMAIN-SUFFIX,mzzxuh.com
-DOMAIN-SUFFIX,lianjiasub.work
-DOMAIN-SUFFIX,muniucloud.pro
-DOMAIN-SUFFIX,kuajing.uk
-DOMAIN-SUFFIX,metacubex.one
-
-IP-CIDR,8.8.8.8/32,no-resolve
-IP-CIDR,8.8.4.4/32,no-resolve
-IP-CIDR,1.1.1.1/32,no-resolve
-IP-CIDR,1.0.0.1/32,no-resolve
-IP-CIDR,185.222.222.222/32,no-resolve
-IP-CIDR,208.67.222.222/32,no-resolve
-IP-CIDR,208.67.220.220/32,no-resolve
+- DOMAIN,6bcloud.top
+- DOMAIN,viptwo.top
+- DOMAIN,followme.com
+- DOMAIN,followme.ceo
+- DOMAIN,whatsmydns.me
+- DOMAIN,hostloc.net
+- DOMAIN,tmgm.com
+- DOMAIN,plexapp.com
+- DOMAIN,plexmediaserver.com
+- DOMAIN,plex.tv
+- DOMAIN,ip111.cn
+- DOMAIN,ipinfo.io
+- DOMAIN,ip-score.com
+- DOMAIN,dnsleaktest.com
+- DOMAIN,asiassn.com
+- DOMAIN,ipleak.net
+- DOMAIN,browserleaks.com
+- DOMAIN,polivera.ai
+- DOMAIN,asiassn.com
+- DOMAIN,mmcks.top
+- DOMAIN,needay.xyz
+- DOMAIN,mzzxuh.com
+- DOMAIN,lianjiasub.work
+- DOMAIN,muniucloud.pro
+- DOMAIN,kuajing.uk
+- DOMAIN,metacubex.one
