@@ -1,73 +1,73 @@
-#openai:
-openaiapi-site.azureedge.net
-openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
-openaicomproductionae4b.blob.core.windows.net
-production-openaicom-storage.azureedge.net
-+.chatgpt.com
-+.chat.com
-+.oaistatic.com
-+.oaiusercontent.com
-+.openai.com
-+.sora.com
-+.chatgpt.livekit.cloud
-+.host.livekit.cloud
-+.turn.livekit.cloud
-+.openai.com.cdn.cloudflare.net
-o33249.ingest.sentry.io
-openaicom.imgix.net
-browser-intake-datadoghq.com
-+.openai.azure.com
-+.openaipublic.blob.core.windows.net
-+.openai-public.azureedge.net
-+.cdn.openai.com  # GitHub Copilot 补充
+# openai:
+- DOMAIN,openaiapi-site.azureedge.net
+- DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+- DOMAIN,openaicomproductionae4b.blob.core.windows.net
+- DOMAIN,production-openaicom-storage.azureedge.net
+- DOMAIN,chatgpt.com
+- DOMAIN,chat.com
+- DOMAIN,oaistatic.com
+- DOMAIN,oaiusercontent.com
+- DOMAIN,openai.com
+- DOMAIN,sora.com
+- DOMAIN,chatgpt.livekit.cloud
+- DOMAIN,host.livekit.cloud
+- DOMAIN,turn.livekit.cloud
+- DOMAIN,openai.com.cdn.cloudflare.net
+- DOMAIN,o33249.ingest.sentry.io
+- DOMAIN,openaicom.imgix.net
+- DOMAIN,browser-intake-datadoghq.com
+- DOMAIN,openai.azure.com
+- DOMAIN,openaipublic.blob.core.windows.net
+- DOMAIN,openai-public.azureedge.net
+- DOMAIN,cdn.openai.com  # GitHub Copilot 补充
 
-#gemini:
-+.gemini.google.com
-+.ai.google
-+.generativelanguage.googleapis.com
-+.vertexai.googleapis.com
-+.ai.googleusercontent.com
-+.cloud.google
-+.googleusercontent.com
-+.deepmind.com
-+.bard.google.com
-+.gstatic.com
-+.firebaseapp.com
+# gemini:
+- DOMAIN,gemini.google.com
+- DOMAIN,ai.google
+- DOMAIN,generativelanguage.googleapis.com
+- DOMAIN,vertexai.googleapis.com
+- DOMAIN,ai.googleusercontent.com
+- DOMAIN,cloud.google
+- DOMAIN,googleusercontent.com
+- DOMAIN,deepmind.com
+- DOMAIN,bard.google.com
+- DOMAIN,gstatic.com
+- DOMAIN,firebaseapp.com
 
-#claude:
-+.anthropic.com
-+.claude.ai
-+.amazonaws.com
-+.s3.amazonaws.com
-+.claudeusercontent.com
-+.anthropic-api.com
-+.anthropic-api.us-east-1.amazonaws.com  # AWS API 代理补充
+# claude:
+- DOMAIN,anthropic.com
+- DOMAIN,claude.ai
+- DOMAIN,amazonaws.com
+- DOMAIN,s3.amazonaws.com
+- DOMAIN,claudeusercontent.com
+- DOMAIN,anthropic-api.com
+- DOMAIN,anthropic-api.us-east-1.amazonaws.com  # AWS API 代理补充
 
-#copilot:
-+.copilot.microsoft.com
-+.githubcopilot.com
-+.copilot.office.com
-+.copilot.microsoft365.com
-+.bingcopilot.com
-+.githubusercontent.com
-+.bing.com
-+.microsoft.com
-+.azure.com
-+.live.com
-+.officecdn.microsoft.com
-+.githubassets.com
+# copilot:
+- DOMAIN,copilot.microsoft.com
+- DOMAIN,githubcopilot.com
+- DOMAIN,copilot.office.com
+- DOMAIN,copilot.microsoft365.com
+- DOMAIN,bingcopilot.com
+- DOMAIN,githubusercontent.com
+- DOMAIN,bing.com
+- DOMAIN,microsoft.com
+- DOMAIN,azure.com
+- DOMAIN,live.com
+- DOMAIN,officecdn.microsoft.com
+- DOMAIN,githubassets.com
 
-#perplexity:
-+.perplexity.ai
-+.pplx.ai
-+.perplexitylabs.com
+# perplexity:
+- DOMAIN,perplexity.ai
+- DOMAIN,pplx.ai
+- DOMAIN,perplexitylabs.com
 
-#mistral:
-+.mistral.ai
-+.mistral-openai.azure.com
-+.mistral-openai-prod.azurewebsites.net  # API 代理补充
+# mistral:
+- DOMAIN,mistral.ai
+- DOMAIN,mistral-openai.azure.com
+- DOMAIN,mistral-openai-prod.azurewebsites.net  # API 代理补充
 
-#xai:
-+.x.ai
-+.xai.com
-+.x-ai.com
+# xai:
+- DOMAIN,x.ai
+- DOMAIN,xai.com
+- DOMAIN,x-ai.com
