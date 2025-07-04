@@ -1,7 +1,7 @@
 payload:
   # OpenAI
-  - DOMAIN,openai.com  # 替换 DOMAIN-KEYWORD, DOMAIN-SUFFIX
-  - DOMAIN,ai.com       # 替换 DOMAIN-KEYWORD, DOMAIN-SUFFIX
+  - DOMAIN,openai.com
+  - DOMAIN,ai.com
   - DOMAIN,openai.com
   - DOMAIN,oaistatic.com
   - DOMAIN,oaiusercontent.com
@@ -56,15 +56,14 @@ payload:
   - DOMAIN,proactivebackend-pa.googleapis.com # Google Cloud API
 
   # Claude (Anthropic)
-  - DOMAIN,claude.ai  # 替换 DOMAIN-KEYWORD, DOMAIN-SUFFIX
   - DOMAIN,claude.ai
   - DOMAIN,anthropic.com
   - DOMAIN,anthropicusercontent.com
   - DOMAIN,cdn.usefathom.com # Anthropic 使用 Fathom 分析
 
   # Copilot (Microsoft / GitHub)
-  - DOMAIN,githubcopilot.com  # 替换 DOMAIN-KEYWORD, DOMAIN-SUFFIX
-  - DOMAIN,openaicom-api  # 替换 DOMAIN-KEYWORD, Copilot 使用 OpenAI API
+  - DOMAIN,githubcopilot.com
+  - DOMAIN,openaicom-api
   - DOMAIN,githubcopilot.com
   - DOMAIN,api.githubcopilot.com
   - DOMAIN,copilot.microsoft.com
