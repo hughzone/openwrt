@@ -1,21 +1,12 @@
-# 直连补充列表(国内域名不解析时，防止走代理使用)
-
-# 个人配置
-- DOMAIN,clashx.top
-- DOMAIN,xhyjs.top
-- DOMAIN,ventoy.net
-- DOMAIN,u.tools
-- DOMAIN,passwallwall.life
-- DOMAIN,sycdn.nodesss.us.kg
-- DOMAIN,myds.me
-
-- DOMAIN,bignet
-- DOMAIN,hzxnet
-- DOMAIN,utools
-- DOMAIN,synology
-- DOMAIN,bilibili
-- DOMAIN,freedidi
-- DOMAIN,syyn
-- DOMAIN,sms-activate
-
-# strava直连配置
+# 自定义直连规则 - 国内服务
+DOMAIN-SUFFIX,myds.me
+DOMAIN-SUFFIX,synology
+DOMAIN-SUFFIX,ventoy.net
+DOMAIN-SUFFIX,u.tools
+DOMAIN-SUFFIX,clashx.top
+DOMAIN-SUFFIX,xhyjs.top
+DOMAIN-SUFFIX,passwallwall.life
+DOMAIN-SUFFIX,sycdn.nodesss.us.kg
+DOMAIN-SUFFIX,bilibili
+DOMAIN-SUFFIX,freedidi
+DOMAIN-SUFFIX,sms-activate
