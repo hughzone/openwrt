@@ -1,4 +1,4 @@
-rules:
+# 自定义ai规则
   # === OpenAI / ChatGPT ===
   - DOMAIN-SUFFIX,auth.openai.com,AI
   - DOMAIN-SUFFIX,auth0.openai.com,AI
@@ -100,3 +100,4 @@ rules:
   - DOMAIN-SUFFIX,stability.ai,AI
   - DOMAIN-SUFFIX,stabilityai.com,AI
   - DOMAIN-SUFFIX,groq.com,AI
+
