@@ -1,103 +1,104 @@
 # === OpenAI / ChatGPT ===
-- DOMAIN-SUFFIX,auth.openai.com
-- DOMAIN-SUFFIX,auth0.openai.com
-- DOMAIN-SUFFIX,chat.openai.com
-- DOMAIN-SUFFIX,chat.openai.com.cdn.cloudflare.net
-- DOMAIN-SUFFIX,chatgpt.com
-- DOMAIN-SUFFIX,desktop.chat.openai.com
-- DOMAIN-SUFFIX,files.oaiusercontent.com
-- DOMAIN-SUFFIX,ios.chat.openai.com
-- DOMAIN-SUFFIX,openai-api.arkoselabs.com
-- DOMAIN-SUFFIX,openai.com
-- DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
-- DOMAIN-SUFFIX,openaiapi.com
-- DOMAIN-SUFFIX,openaiapi.openai.com
-- DOMAIN-SUFFIX,openaiapi-platform.openai.com
-- DOMAIN-SUFFIX,oaistatic.com
-- DOMAIN-SUFFIX,oaiusercontent.com
-- DOMAIN-SUFFIX,openaicom.imgix.net
-- DOMAIN-SUFFIX,openaicom-api.azureedge.net
-- DOMAIN-SUFFIX,openaicomproductionae4b.blob.core.windows.net
-- DOMAIN-SUFFIX,production-openaicom-storage.azureedge.net
-- DOMAIN-SUFFIX,setup.auth.openai.com
-- DOMAIN-SUFFIX,statsig.com
-- DOMAIN-SUFFIX,statsigapi.net
-- DOMAIN-SUFFIX,events.statsigapi.net
-- DOMAIN-SUFFIX,featureassets.org
-- DOMAIN-SUFFIX,featuregates.org
-- DOMAIN-SUFFIX,launchdarkly.com
-- DOMAIN-SUFFIX,intercom.io
-- DOMAIN-SUFFIX,intercomcdn.com
-- DOMAIN-SUFFIX,js.intercomcdn.com
-- DOMAIN-SUFFIX,stripe.com
-- DOMAIN-SUFFIX,js.stripe.com
-- DOMAIN-SUFFIX,algolia.net
-- DOMAIN-SUFFIX,livekit.cloud
-- DOMAIN-SUFFIX,browser-intake-datadoghq.com
-- DOMAIN-SUFFIX,cloudflare.com
-- DOMAIN-SUFFIX,challenge.cloudflare.com
-- DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,auth.openai.com
+DOMAIN-SUFFIX,auth0.openai.com
+DOMAIN-SUFFIX,chat.openai.com
+DOMAIN-SUFFIX,chat.openai.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,desktop.chat.openai.com
+DOMAIN-SUFFIX,files.oaiusercontent.com
+DOMAIN-SUFFIX,ios.chat.openai.com
+DOMAIN-SUFFIX,openai-api.arkoselabs.com
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,openaiapi.com
+DOMAIN-SUFFIX,openaiapi.openai.com
+DOMAIN-SUFFIX,openaiapi-platform.openai.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openaicom.imgix.net
+DOMAIN-SUFFIX,openaicom-api.azureedge.net
+DOMAIN-SUFFIX,openaicomproductionae4b.blob.core.windows.net
+DOMAIN-SUFFIX,production-openaicom-storage.azureedge.net
+DOMAIN-SUFFIX,setup.auth.openai.com
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,statsigapi.net
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featureassets.org
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,js.intercomcdn.com
+DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,js.stripe.com
+DOMAIN-SUFFIX,algolia.net
+DOMAIN-SUFFIX,livekit.cloud
+DOMAIN-SUFFIX,browser-intake-datadoghq.com
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,challenge.cloudflare.com
+DOMAIN-SUFFIX,sentry.io
 
 # === Google Gemini & Vertex AI ===
 - DOMAIN-SUFFIX.google.dev
-- DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
-- DOMAIN-SUFFIX,apis.google.com
+DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
+DOMAIN-SUFFIX,apis.google.com
 - DOMAIN-SUFFIXstudio.google.com
-- DOMAIN-SUFFIX,bard.google.com
-- DOMAIN-SUFFIX,cloudaicompanion.googleapis.com
-- DOMAIN-SUFFIX,deepmind.com
-- DOMAIN-SUFFIX,deepmind.google
-- DOMAIN-SUFFIX,generativeai.google
-- DOMAIN-SUFFIX,generativelanguage.google
-- DOMAIN-SUFFIX,generativelanguage.googleapis.com
-- DOMAIN-SUFFIX,gemini.google.com
-- DOMAIN-SUFFIX,google.com
-- DOMAIN-SUFFIX,makersuite.google.com
-- DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,cloudaicompanion.googleapis.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,generativelanguage.google
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,google.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 
 # === Anthropic Claude ===
-- DOMAIN-SUFFIX,anthropic.com
-- DOMAIN-SUFFIX,anthropicusercontent.com
-- DOMAIN-SUFFIX,claude.ai
-- DOMAIN-SUFFIX,usefathom.com
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,anthropicusercontent.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,usefathom.com
 
 # === Microsoft Copilot & Bing ===
-- DOMAIN-SUFFIX,api.githubcopilot.com
-- DOMAIN-SUFFIX,bing.com
-- DOMAIN-SUFFIX,bingapis.com
-- DOMAIN-SUFFIX,events.data.microsoft.com
-- DOMAIN-SUFFIX,githubcopilot.com
-- DOMAIN-SUFFIX,microsoftapp.net
-- DOMAIN-SUFFIX,msn.com
-- DOMAIN-SUFFIX,officeapps.live.com
-- DOMAIN-SUFFIX,appcenter.ms
-- DOMAIN-SUFFIX,copilot.microsoft.com
+DOMAIN-SUFFIX,api.githubcopilot.com
+DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,bingapis.com
+DOMAIN-SUFFIX,events.data.microsoft.com
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN-SUFFIX,microsoftapp.net
+DOMAIN-SUFFIX,msn.com
+DOMAIN-SUFFIX,officeapps.live.com
+DOMAIN-SUFFIX,appcenter.ms
+DOMAIN-SUFFIX,copilot.microsoft.com
 
 # === X.ai Grok ===
-- DOMAIN-SUFFIX,grok.com
-- DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
 
 # === Meta AI ===
-- DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,meta.ai
 
 # === 其他 AI 服务 ===
-- DOMAIN-SUFFIX,clipdrop.co
-- DOMAIN-SUFFIX,codeium.com
-- DOMAIN-SUFFIX,codeiumdata.com
-- DOMAIN-SUFFIX,cohere.ai
-- DOMAIN-SUFFIX,coze.com
-- DOMAIN-SUFFIX,grazie.ai
-- DOMAIN-SUFFIX,hcompany.ai
-- DOMAIN-SUFFIX,intellij.net
-- DOMAIN-SUFFIX,klingai.com
-- DOMAIN-SUFFIX,lmsys.org
-- DOMAIN-SUFFIX,midjourney.com
-- DOMAIN-SUFFIX,mistral.ai
-- DOMAIN-SUFFIX,perplexity.ai
-- DOMAIN-SUFFIX,poe.com
-- DOMAIN-SUFFIX,sider.ai
-- DOMAIN-SUFFIX,stability.ai
-- DOMAIN-SUFFIX,stabilityai.com
-- DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,clipdrop.co
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,codeiumdata.com
+DOMAIN-SUFFIX,cohere.ai
+DOMAIN-SUFFIX,coze.com
+DOMAIN-SUFFIX,grazie.ai
+DOMAIN-SUFFIX,hcompany.ai
+DOMAIN-SUFFIX,intellij.net
+DOMAIN-SUFFIX,klingai.com
+DOMAIN-SUFFIX,lmsys.org
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,mistral.ai
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,sider.ai
+DOMAIN-SUFFIX,stability.ai
+DOMAIN-SUFFIX,stabilityai.com
+DOMAIN-SUFFIX,groq.com
+
 
 
