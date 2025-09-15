@@ -4,7 +4,7 @@
 DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,obsidian.md
 DOMAIN-SUFFIX,gpt.ge
-DOMAIN-SUFFIX,qichiyu  # 需要替换为更精确的 DOMAIN 规则
+DOMAIN-KEYWORD,mojie
 
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
