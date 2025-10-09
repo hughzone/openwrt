@@ -1,6 +1,6 @@
 # 自定义直连规则 - 国内服务
 DOMAIN-SUFFIX,myds.me
-DOMAIN-SUFFIX,synology
+DOMAIN-SUFFIX,synology.com
 DOMAIN-SUFFIX,quickconnect.cn
 DOMAIN-SUFFIX,ventoy.net
 DOMAIN-SUFFIX,u.tools
@@ -15,3 +15,8 @@ DOMAIN-SUFFIX,ikuai7.com
 DOMAIN-SUFFIX,lifenet.top
 DOMAIN-SUFFIX,digitalocean.com
 DOMAIN-SUFFIX,akamai.com
+DOMAIN-SUFFIX,checkip.synology.com
+DOMAIN-SUFFIX,checkipv6.synology.com
+DOMAIN-SUFFIX,checkport.synology.com
+DOMAIN-SUFFIX,ddns.synology.com
+DOMAIN-SUFFIX,account.synology.com
