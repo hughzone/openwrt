@@ -1,6 +1,6 @@
 # 自定义直连规则 - 国内服务
 DOMAIN-SUFFIX,myds.me
-DOMAIN-SUFFIX,synology.com
+DOMAIN-SUFFIX,synology.cn
 DOMAIN-SUFFIX,quickconnect.cn
 DOMAIN-SUFFIX,quickconnect.to
 DOMAIN-SUFFIX,ventoy.net
