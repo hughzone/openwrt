@@ -5,6 +5,7 @@ DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,obsidian.md
 DOMAIN-SUFFIX,gpt.ge
 DOMAIN-KEYWORD,mojie
+DOMAIN-SUFFIX,capcut.com
 
 # 国外DNS
 DOMAIN-SUFFIX,dns.google
