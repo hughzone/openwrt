@@ -6,7 +6,7 @@
 
 proxy-providers:
 
-  substore_smart:
+  substore_smart:  # 机场订阅名称（substore_smart替换为自己订阅名称），名称不能重复
     url: "替换为机场订阅地址"
     type: http
     interval: 86400
