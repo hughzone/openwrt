@@ -39,10 +39,10 @@ DOMAIN-SUFFIX,challenge.cloudflare.com
 DOMAIN-SUFFIX,sentry.io
 
 # === Google Gemini & Vertex AI ===
-- DOMAIN-SUFFIX.google.dev
+DOMAIN-SUFFIX,google.dev
 DOMAIN-SUFFIX,alkalimakersuite-pa.clients6.google.com
 DOMAIN-SUFFIX,apis.google.com
-- DOMAIN-SUFFIXstudio.google.com
+DOMAIN-SUFFIX,studio.google.com
 DOMAIN-SUFFIX,bard.google.com
 DOMAIN-SUFFIX,cloudaicompanion.googleapis.com
 DOMAIN-SUFFIX,deepmind.com
