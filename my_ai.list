@@ -20,19 +20,16 @@ DOMAIN-SUFFIX,openaicom-api.azureedge.net
 DOMAIN-SUFFIX,openaicomproductionae4b.blob.core.windows.net
 DOMAIN-SUFFIX,production-openaicom-storage.azureedge.net
 DOMAIN-SUFFIX,setup.auth.openai.com
-DOMAIN-SUFFIX,statsig.com
 DOMAIN-SUFFIX,statsigapi.net
 DOMAIN-SUFFIX,events.statsigapi.net
 DOMAIN-SUFFIX,featureassets.org
 DOMAIN-SUFFIX,featuregates.org
 DOMAIN-SUFFIX,launchdarkly.com
-DOMAIN-SUFFIX,intercom.io
 DOMAIN-SUFFIX,intercomcdn.com
 DOMAIN-SUFFIX,js.intercomcdn.com
 DOMAIN-SUFFIX,stripe.com
 DOMAIN-SUFFIX,js.stripe.com
 DOMAIN-SUFFIX,algolia.net
-DOMAIN-SUFFIX,livekit.cloud
 DOMAIN-SUFFIX,browser-intake-datadoghq.com
 DOMAIN-SUFFIX,challenge.cloudflare.com
 DOMAIN-SUFFIX,sentry.io
@@ -61,11 +58,7 @@ DOMAIN-SUFFIX,usefathom.com
 # === Microsoft Copilot ===
 DOMAIN-SUFFIX,api.githubcopilot.com
 DOMAIN-SUFFIX,bingapis.com
-DOMAIN-SUFFIX,events.data.microsoft.com
 DOMAIN-SUFFIX,githubcopilot.com
-DOMAIN-SUFFIX,microsoftapp.net
-DOMAIN-SUFFIX,officeapps.live.com
-DOMAIN-SUFFIX,appcenter.ms
 DOMAIN-SUFFIX,copilot.microsoft.com
 
 # === X.ai Grok ===
@@ -83,7 +76,6 @@ DOMAIN-SUFFIX,cohere.ai
 DOMAIN-SUFFIX,coze.com
 DOMAIN-SUFFIX,grazie.ai
 DOMAIN-SUFFIX,hcompany.ai
-DOMAIN-SUFFIX,intellij.net
 DOMAIN-SUFFIX,klingai.com
 DOMAIN-SUFFIX,lmsys.org
 DOMAIN-SUFFIX,midjourney.com
@@ -94,6 +86,3 @@ DOMAIN-SUFFIX,sider.ai
 DOMAIN-SUFFIX,stability.ai
 DOMAIN-SUFFIX,stabilityai.com
 DOMAIN-SUFFIX,groq.com
-
-
-
