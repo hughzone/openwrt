@@ -32,4 +32,5 @@ DOMAIN-SUFFIX,codingplan.org
 # 启用：在文件末尾新增两行规则，格式为「DOMAIN-SUFFIX + 英文逗号 + 域名」，域名如下
 #   待启用域名 opencode.ai —— 模型网关 zen/go/v1 的唯一域名，已覆盖 api / auth / console 子域
 #   待启用域名 models.dev —— 仅 opencode CLI 拉取模型目录时需要，Hermes 不读，可不加
-# 生效：保存后在 OpenBox 面板刷新规则清单即可，无需重启 OpenBox
+# 生效：保存后需让 OpenBox 触发一次配置重建（面板改动任一分流项并保存，或重启 OpenBox），
+#       仅在面板里刷新页面不会重新拉取规则集；重建后可在「前置直连 → 编辑」的「详情(N)」核对条数
