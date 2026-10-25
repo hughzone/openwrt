@@ -35,5 +35,5 @@ DOMAIN-SUFFIX,codingplan.org
 # 生效：保存后需让 OpenBox 触发一次配置重建（面板改动任一分流项并保存，或重启 OpenBox），
 #       仅在面板里刷新页面不会重新拉取规则集；重建后可在「前置直连 → 编辑」的「详情(N)」核对条数
 
-# DOMAIN-SUFFIX,opencode.ai
-# DOMAIN-SUFFIX,models.dev
+DOMAIN-SUFFIX,opencode.ai
+DOMAIN-SUFFIX,models.dev
