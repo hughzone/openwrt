@@ -26,6 +26,7 @@ DOMAIN-SUFFIX,ggff.net
 DOMAIN-SUFFIX,jtti.cc
 DOMAIN-SUFFIX,adobe.com
 DOMAIN-SUFFIX,codingplan.org
+DOMAIN-SUFFIX,fwoa.jytongheng.com
 
 # ===== OpenCode Go 模型调用（预留，暂不启用）=====
 # 用途：代理节点全部故障时让 opencode 走直连，Hermes 仍可调用 opencode-go 的全部模型
