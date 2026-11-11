@@ -86,3 +86,6 @@ DOMAIN-SUFFIX,sider.ai
 DOMAIN-SUFFIX,stability.ai
 DOMAIN-SUFFIX,stabilityai.com
 DOMAIN-SUFFIX,groq.com
+
+# === AI 模型目录（opencode CLI / Hermes 拉取模型清单）===
+DOMAIN-SUFFIX,models.dev
