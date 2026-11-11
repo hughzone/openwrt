@@ -5,6 +5,8 @@ DOMAIN-SUFFIX,obsidian.md
 DOMAIN-SUFFIX,image.canon
 DOMAIN-SUFFIX,pypi.org
 DOMAIN-SUFFIX,pythonhosted.org
+DOMAIN-SUFFIX,cdn.jsdelivr.net
+DOMAIN-SUFFIX,unpkg.com
 
 # 国外DNS
 
