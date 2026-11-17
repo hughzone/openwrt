@@ -88,5 +88,5 @@ DOMAIN-SUFFIX,stabilityai.com
 DOMAIN-SUFFIX,groq.com
 
 # ===== OpenCode Go 模型调用（预留，暂不启用）=====
-DOMAIN-SUFFIX,opencode.ai
-DOMAIN-SUFFIX,models.dev
+# DOMAIN-SUFFIX,opencode.ai
+# DOMAIN-SUFFIX,models.dev
