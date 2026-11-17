@@ -28,6 +28,7 @@ DOMAIN-SUFFIX,adobe.com
 DOMAIN-SUFFIX,codingplan.org
 DOMAIN-SUFFIX,jytongheng.com
 
-# ===== OpenCode Go 模型调用（预留，暂不启用）=====
+# OpenCode Go 模型调用（已启用）
+
 DOMAIN-SUFFIX,opencode.ai
 DOMAIN-SUFFIX,models.dev
